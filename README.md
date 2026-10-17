@@ -12,20 +12,22 @@ A French course for Italian speakers, to learn to speak and write French from sc
 
 Every lesson is a markdown file in [`lessons/`](lessons) with two parts:
 
-1. **Apprenons (Impariamo)** — new words, concepts and rules. Each section has an
-   audio track: the voice reads every word or sentence in French, then in Italian,
-   asks you to repeat, says the French again and leaves a pause for you to repeat
-   aloud. The part ends with pen-and-paper exercises, including a writing exercise.
+1. **Apprenons (Impariamo)** — new words, concepts and rules. The voice reads every
+   word or sentence in French, then in Italian, asks you to repeat, says the French
+   again and leaves a pause for you to repeat aloud. The part ends with pen-and-paper
+   exercises, including a writing exercise.
 2. **Lire et écouter (Leggere e ascoltare)** — dialogues, stories and sentences.
    Listen first without reading (the track plays the French only), then listen again
    line by line with the Italian translation, then read the text and answer the questions.
 
-Solutions are at the end of each part, folded inside a *Soluzioni* box.
+Solutions are at the end of each part, folded inside a *Solutions* box.
 
 Conventions used in the text:
 
-- French is in **bold**, the Italian translation follows in *(italic between parentheses)*.
-- Explanations are in Italian.
+- Everything is written in French — explanations and instructions included — and each
+  sentence is followed by its Italian translation in *(italic between parentheses)*.
+- New words are in **bold**.
+- The whole lesson has audio, except the solutions and the summary tables.
 
 ## Audio
 
@@ -38,18 +40,26 @@ the page is rendered:
 
 ```markdown
 <!-- audio:repeat 01-salutations -->
-- **Bonjour.** (*Buongiorno.*)
+### 1. Les salutations (*I saluti*)
+
+On salue de façon différente selon la personne. (*Si saluta in modo diverso secondo la persona.*)
+
+- **Bonjour.** (*Buongiorno.*) — On le dit toute la journée. (*Si dice per tutto il giorno.*)
 <!-- /audio -->
 
-<!-- audio:listen 06-au-cafe | Léa=f; Tom=m -->
-- Léa: **Salut, Tom !** (*Ciao, Tom!*)
+<!-- audio:listen 08-au-cafe | Léa=f; Tom=m -->
+- **Léa :** Salut, Tom ! (*Ciao, Tom!*)
 <!-- /audio -->
 ```
 
-- `repeat` blocks: drill items (`**French** (*Italiano*)` list items) get the
-  French → Italian → "Ripeti" → French → pause pattern; other text is read through.
+- Text is read in French, *(italic in parentheses)* in Italian; **bold** inside the
+  Italian is read in French (for French words quoted in a translation).
+- `repeat` blocks: drill items (list items starting with `**French** (*Italiano*)`)
+  get the French → Italian → notes → "Répète" → French → pause pattern; everything
+  else is read through.
 - `listen` blocks: played once in French only, then line by line with the translation.
   Speakers get a female (`f`) or male (`m`) voice.
+- Blocks with the same name go into one track (for example a dialogue and its questions).
 
 To regenerate the audio (needs Python 3, `ffmpeg` and internet access):
 
@@ -57,7 +67,7 @@ To regenerate the audio (needs Python 3, `ffmpeg` and internet access):
 pip install -r requirements.txt
 python tools/make_audio.py                              # all lessons
 python tools/make_audio.py lessons/01-bonjour.md        # one lesson
-python tools/make_audio.py --only 06-au-cafe            # one track
+python tools/make_audio.py --only 08-au-cafe            # one track
 python tools/make_audio.py --dry-run lessons/01-bonjour.md   # show what would be read
 ```
 

@@ -7,22 +7,22 @@ Each lesson marks the parts to be read aloud with HTML comments:
     ...
     <!-- /audio -->
 
-    <!-- audio:listen 06-au-cafe | Léa=f; Tom=m -->
+    <!-- audio:listen 08-au-cafe | Léa=f; Tom=m -->
     ...
     <!-- /audio -->
 
-Inside a block, **bold** text is French, *(italic in parentheses)* is the
-Italian translation, and any other text is Italian.
+Inside a block, text is French and *(italic in parentheses)* is its Italian
+translation; **bold** inside a translation is French again.
 
 - `repeat` blocks are read in order. A list item of the form
   `**French** (*Italiano*) notes` is a drill: French, Italian, notes,
-  "Ripeti", French again, then a pause long enough to repeat.
+  "Répète", French again, then a pause long enough to repeat.
 - `listen` blocks are played twice: first the French only, then line by line
-  with the Italian translation. A list item may start with a speaker label
-  (`Léa: **...** (*...*)`); speakers get a female (f) or male (m) voice as
+  with the Italian translation. A list item may start with a bold speaker
+  label (`**Léa :** ...`); speakers get a female (f) or male (m) voice as
   declared after the `|`.
 
-Each block becomes audio/<lesson>/<name>.mp3.
+Blocks with the same name go into the same track, audio/<lesson>/<name>.mp3.
 
 Usage:
     python tools/make_audio.py                     # all lessons
@@ -50,13 +50,20 @@ SPEAKER_VOICES = {
     "m": ["fr-FR-HenriNeural", "fr-FR-RemyMultilingualNeural"],
 }
 
-FRENCH_RATE = "-10%"      # drills and dialogues, slightly slower than normal
+FRENCH_RATE = "-10%"      # slightly slower than normal speech
 ECHO_RATE = "-20%"        # the French repeated right before the pause
 ITALIAN_RATE = "+0%"
 
 REPEAT_FACTOR = 1.6       # pause = this × length of the French + REPEAT_EXTRA
 REPEAT_EXTRA = 1.5
 REPEAT_MIN = 3.0
+
+# What the voice says around the lesson text, French first.
+DRILL_START = [("fr", "Écoute et répète."), ("it", "Ascolta e ripeti.")]
+REPEAT = "Répète."
+FIRST_LISTEN = [("fr", "Première écoute. Écoute sans lire."), ("it", "Primo ascolto. Ascolta senza leggere.")]
+SECOND_LISTEN = [("fr", "Deuxième écoute, avec la traduction."), ("it", "Secondo ascolto, con la traduzione.")]
+READ_ALOUD = [("fr", "Maintenant, lis le texte à voix haute."), ("it", "Ora leggi il testo ad alta voce.")]
 
 SAMPLE_RATE = 24000
 
@@ -65,13 +72,12 @@ BLOCK_RE = re.compile(
     r"(?P<body>.*?)<!--\s*/audio\s*-->",
     re.S,
 )
-HEADING_RE = re.compile(r"^#+\s*(?P<fr>.+?)\s*\(\*(?P<it>.+?)\*\)\s*$")
-ITEM_RE = re.compile(
-    r"^(?:(?P<speaker>[^*:]+?)\s*:\s*)?\*\*(?P<fr>.+?)\*\*\s*\(\*(?P<it>.+?)\*\)(?P<rest>.*)$"
-)
-INLINE_RE = re.compile(r"\*\*(?P<fr>.+?)\*\*|\(\*(?P<it>.+?)\*\)|`(?P<code>[^`]+)`")
+DRILL_RE = re.compile(r"^\*\*(?P<fr>[^*]+?)\*\*\s*\(\*(?P<it>.+?)\*\)(?P<rest>.*)$")
+SPEAKER_RE = re.compile(r"^\*\*(?P<speaker>[^*]+?)\s*:\s*\*\*\s*(?P<line>.*)$")
+TRANSLATION_RE = re.compile(r"\(\*(.+?)\*\)")
+BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
 LINK_RE = re.compile(r"\[([^\]]*)\]\([^)]*\)")
-SYMBOL_RE = re.compile("[\U0001F000-\U0001FFFF☀-➿️]")
+SYMBOL_RE = re.compile("[\U0001F000-\U0001FFFF←-⇿☀-➿️]")
 
 
 # ---------------------------------------------------------------- parsing
@@ -79,8 +85,10 @@ SYMBOL_RE = re.compile("[\U0001F000-\U0001FFFF☀-➿️]")
 def clean(text):
     text = LINK_RE.sub(r"\1", text)
     text = SYMBOL_RE.sub("", text)
-    text = text.replace("*", "").replace("_", " ")
-    return " ".join(text.split())
+    text = re.sub(r"_{2,}", "…", text)            # blanks in the exercises
+    text = re.sub(r"[*`#]", "", text)
+    text = " ".join(text.split()).strip(" —-–").lstrip(",;:. ")
+    return re.sub(r"\s+([,.;!?])", r"\1", text)
 
 
 def spoken(text):
@@ -88,40 +96,33 @@ def spoken(text):
     return any(c.isalnum() for c in text)
 
 
-def segments(text):
-    """Split a line of markdown into (lang, text) pieces."""
-    out = []
-
-    def plain(chunk):
-        chunk = clean(chunk).strip(" —-–")
-        if chunk:
-            out.append(("it", chunk))
-
-    pos = 0
-    for m in INLINE_RE.finditer(text):
-        plain(text[pos:m.start()])
-        if m.group("fr"):
-            out.append(("fr", clean(m.group("fr"))))
-        elif m.group("it"):
-            out.append(("it", clean(m.group("it"))))
-        else:
-            code = m.group("code").strip("-")
-            # Short letter groups (`ou`, `s`) are spelled out letter by letter.
-            if len(code) <= 3 and code.isalpha():
-                code = ", ".join(code)
-            out.append(("it", code))
+def split_languages(text):
+    """French text with (*Italian*) translations, **French** inside those."""
+    out, pos = [], 0
+    for m in TRANSLATION_RE.finditer(text):
+        out.append(("fr", text[pos:m.start()]))
+        inner = 0
+        for b in BOLD_RE.finditer(m[1]):
+            out += [("it", m[1][inner:b.start()]), ("fr", b[1])]
+            inner = b.end()
+        out.append(("it", m[1][inner:]))
         pos = m.end()
-    plain(text[pos:])
+    out.append(("fr", text[pos:]))
+    return out
 
-    # Consecutive Italian pieces are one sentence: say them in one breath.
+
+def segments(text):
+    """Split a line of markdown into the (lang, text) pieces to say."""
     merged = []
-    for lang, piece in out:
-        if merged and lang == "it" == merged[-1][0]:
-            merged[-1] = ("it", merged[-1][1] + " " + piece)
+    for lang, piece in split_languages(text):
+        piece = clean(piece)
+        if not piece:
+            continue
+        if merged and merged[-1][0] == lang:
+            merged[-1] = (lang, merged[-1][1] + " " + piece)
         else:
             merged.append((lang, piece))
-    return [(lang, re.sub(r"\s+([,.;:!?])", r"\1", piece))
-            for lang, piece in merged if spoken(piece)]
+    return [(lang, piece) for lang, piece in merged if spoken(piece)]
 
 
 def elements(body):
@@ -135,7 +136,7 @@ def elements(body):
         if para and (not line or is_item or line.startswith("#")):
             yield "para", " ".join(para)
             para = []
-        if not line or line.startswith("|") or line.startswith("<!--"):
+        if not line or line[0] in "|<" or line.startswith("🎧"):
             continue
         if line.startswith("#"):
             yield "heading", line
@@ -156,53 +157,35 @@ def say(voice, text, rate=None):
     return ("say", voice, rate, text)
 
 
-def read_segments(segs, french=FRENCH):
+def read(segs, french=FRENCH, gap=0.5):
     steps = []
     for lang, text in segs:
-        steps.append(say(french if lang == "fr" else NARRATOR, text))
-        steps.append(("pause", 0.4))
+        steps += [say(french if lang == "fr" else NARRATOR, text), ("pause", gap)]
     return steps
-
-
-def heading_steps(line):
-    m = HEADING_RE.match(line)
-    if m:
-        segs = [("fr", clean(m["fr"])), ("it", clean(m["it"]))]
-    else:
-        segs = [("it", clean(line.lstrip("#")))]
-    return read_segments(segs) + [("pause", 0.8)]
 
 
 def repeat_script(body):
     steps = []
     in_drill = False
     for kind, text in elements(body):
-        m = ITEM_RE.match(text) if kind == "item" else None
+        m = DRILL_RE.match(text) if kind == "item" else None
         if not m:
             in_drill = False
-            if kind == "heading":
-                steps += heading_steps(text)
-            else:
-                steps += read_segments(segments(text)) + [("pause", 0.6)]
+            steps += read(segments(text)) + [("pause", 1.0 if kind == "heading" else 0.6)]
             continue
         if not in_drill:
-            steps += [say(NARRATOR, "Ascolta e ripeti."), ("pause", 1.0)]
+            steps += read(DRILL_START) + [("pause", 0.5)]
             in_drill = True
         fr, it = clean(m["fr"]), clean(m["it"])
         steps += [say(FRENCH, fr), ("pause", 0.6), say(NARRATOR, it), ("pause", 0.5)]
-        rest = segments(m["rest"])
-        if rest:
-            steps += read_segments(rest)
-        steps += [
-            say(NARRATOR, "Ripeti."), ("pause", 0.3),
-            say(FRENCH, fr, ECHO_RATE), ("repeat_pause",),
-        ]
+        steps += read(segments(m["rest"]))
+        steps += [say(FRENCH, REPEAT), ("pause", 0.3), say(FRENCH, fr, ECHO_RATE), ("repeat_pause",)]
     return steps
 
 
 def parse_voices(spec):
     """'Léa=f; Tom=m' -> {'Léa': voice, 'Tom': voice}"""
-    voices, used = {}, {"f": 0, "m": 0}
+    voices, used = {}, {}
     for part in (spec or "").split(";"):
         if "=" not in part:
             continue
@@ -215,41 +198,38 @@ def parse_voices(spec):
 
 def listen_script(body, voices_spec):
     voices = parse_voices(voices_spec)
-    title, lines = None, []   # lines: (voice, [(lang, text), ...])
+    title, lines = [], []   # lines: (voice, [(lang, text), ...])
     for kind, text in elements(body):
         if kind == "heading":
-            title = text
+            title = segments(text)
             continue
-        m = ITEM_RE.match(text) if kind == "item" else None
-        speaker = m["speaker"].strip() if m and m["speaker"] else None
-        if speaker:
-            text = text.split(":", 1)[1]
-        lines.append((voices.get(speaker, FRENCH), segments(text)))
+        voice = FRENCH
+        m = SPEAKER_RE.match(text) if kind == "item" else None
+        if m:
+            voice, text = voices.get(m["speaker"], FRENCH), m["line"]
+        lines.append((voice, segments(text)))
 
-    steps = []
-    if title:
-        steps += heading_steps(title)
-    steps += [say(NARRATOR, "Primo ascolto. Ascolta senza leggere."), ("pause", 1.5)]
+    steps = read(title) + [("pause", 1.0)]
+    steps += read(FIRST_LISTEN) + [("pause", 1.0)]
     for voice, segs in lines:
-        for lang, text in segs:
-            if lang == "fr":
-                steps += [say(voice, text), ("pause", 0.7)]
-    steps += [("pause", 2.0), say(NARRATOR, "Ora ascolta di nuovo, con la traduzione."), ("pause", 1.5)]
+        steps += read([s for s in segs if s[0] == "fr"], french=voice, gap=0.7)
+    steps += [("pause", 1.5)] + read(SECOND_LISTEN) + [("pause", 1.0)]
     for voice, segs in lines:
-        steps += read_segments(segs, french=voice)
-        steps.append(("pause", 0.8))
-    steps += [("pause", 1.0), say(NARRATOR, "Ora leggi il testo ad alta voce.")]
+        steps += read(segs, french=voice) + [("pause", 0.6)]
+    steps += [("pause", 1.0)] + read(READ_ALOUD) + [("pause", 1.5)]
     return steps
 
 
 def lesson_tracks(path):
-    text = path.read_text(encoding="utf-8")
-    for m in BLOCK_RE.finditer(text):
+    """{track name: steps}, in the order the tracks appear in the lesson."""
+    tracks = {}
+    for m in BLOCK_RE.finditer(path.read_text(encoding="utf-8")):
         if m["mode"] == "repeat":
             steps = repeat_script(m["body"])
         else:
             steps = listen_script(m["body"], m["voices"])
-        yield m["name"], steps
+        tracks.setdefault(m["name"], []).extend(steps)
+    return tracks
 
 
 # ---------------------------------------------------------------- audio
@@ -336,7 +316,7 @@ async def main():
 
     lessons = args.lessons or sorted((ROOT / "lessons").glob("*.md"))
     for lesson in lessons:
-        for name, steps in lesson_tracks(lesson):
+        for name, steps in lesson_tracks(lesson).items():
             if args.only and name != args.only:
                 continue
             if args.dry_run:
