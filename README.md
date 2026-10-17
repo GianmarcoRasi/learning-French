@@ -27,6 +27,7 @@ Conventions used in the text:
 - Everything is written in French — explanations and instructions included — and each
   sentence is followed by its Italian translation in *(italic between parentheses)*.
 - New words are in **bold**.
+- Headings are in French only, without translation.
 - The whole lesson has audio, except the solutions and the summary tables.
 
 ## Audio
@@ -40,7 +41,7 @@ the page is rendered:
 
 ```markdown
 <!-- audio:repeat 01-salutations -->
-### 1. Les salutations (*I saluti*)
+### 1. Les salutations
 
 On salue de façon différente selon la personne. (*Si saluta in modo diverso secondo la persona.*)
 
@@ -52,8 +53,7 @@ On salue de façon différente selon la personne. (*Si saluta in modo diverso se
 <!-- /audio -->
 ```
 
-- Text is read in French, *(italic in parentheses)* in Italian; **bold** inside the
-  Italian is read in French (for French words quoted in a translation).
+- Text is read in French, *(italic in parentheses)* entirely in Italian.
 - `repeat` blocks: drill items (list items starting with `**French** (*Italiano*)`)
   get the French → Italian → notes → "Répète" → French → pause pattern; everything
   else is read through.
