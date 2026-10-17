@@ -8,6 +8,7 @@ A French course for Italian speakers, to learn to speak and write French from sc
 |---|---|---|---|
 | 1 | [Bonjour !](lessons/01-bonjour.md) | [Bonjour !](lessons/french-only/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
 | 2 | [Qu'est-ce que c'est ?](lessons/02-qu-est-ce-que-c-est.md) | [Qu'est-ce que c'est ?](lessons/french-only/02-qu-est-ce-que-c-est.md) | numbers 0–20, nasal vowels, articles and gender, *c'est* and *il y a*, the verb *avoir*, age |
+| 3 | [Ma famille](lessons/03-ma-famille.md) | [Ma famille](lessons/french-only/03-ma-famille.md) | family, possessives, *-er* verbs and *aimer*, negation, questions with *est-ce que* and *si* |
 
 ## How each lesson works
 
