@@ -4,9 +4,9 @@ A French course for Italian speakers, to learn to speak and write French from sc
 
 ## Lessons
 
-| # | Lesson | Topics |
-|---|---|---|
-| 1 | [Bonjour !](lessons/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
+| # | Lesson | French only | Topics |
+|---|---|---|---|
+| 1 | [Bonjour !](lessons/01-bonjour.md) | [Bonjour !](lessons/french-only/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
 
 ## How each lesson works
 
@@ -30,9 +30,30 @@ Conventions used in the text:
 - Headings are in French only, without translation.
 - The whole lesson has audio, except the solutions and the summary tables.
 
+### French-only version
+
+Each lesson also comes in a French-only version, with its own audio, in
+[`lessons/french-only/`](lessons/french-only): the same lesson without the Italian
+translations, to go through it again once you have listened to it a couple of times.
+Drills go French → "Répète" → French → pause, and dialogues are played once, in French.
+Only the Italian sentences of the translation exercise are kept.
+
+The French-only version is generated from the main lesson file: never edit it by hand.
+Text that only makes sense in one version is marked in the main file:
+
+```markdown
+<!-- bilingual -->
+Only in the version with translations.
+<!-- /bilingual -->
+<!-- french-only
+Only in the French-only version.
+-->
+```
+
 ## Audio
 
-The tracks live in [`audio/`](audio), one folder per lesson. They are generated from the
+The tracks live in [`audio/`](audio), one folder per lesson, and in
+[`audio/french-only/`](audio/french-only) for the French-only version. They are generated from the
 lesson text by [`tools/make_audio.py`](tools/make_audio.py) with Microsoft's neural voices
 (through [edge-tts](https://github.com/rany2/edge-tts)), so they follow the lesson whenever it changes.
 
@@ -71,5 +92,5 @@ python tools/make_audio.py --only 08-au-cafe            # one track
 python tools/make_audio.py --dry-run lessons/01-bonjour.md   # show what would be read
 ```
 
-Generated clips are cached in `.audio-cache/`, so re-running after a small edit only
-synthesizes the sentences that changed.
+The same command writes the French-only lesson files. Generated clips are cached in
+`.audio-cache/`, so re-running after a small edit only synthesizes the sentences that changed.
