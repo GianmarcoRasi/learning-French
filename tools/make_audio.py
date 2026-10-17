@@ -54,9 +54,12 @@ FRENCH_RATE = "-10%"      # slightly slower than normal speech
 ECHO_RATE = "-20%"        # the French repeated right before the pause
 ITALIAN_RATE = "+0%"
 
-REPEAT_FACTOR = 1.6       # pause = this × length of the French + REPEAT_EXTRA
-REPEAT_EXTRA = 1.5
-REPEAT_MIN = 3.0
+TRANSLATION_GAP = 0.25    # between a French sentence and its Italian translation
+SENTENCE_GAP = 0.8        # between one sentence (or French/Italian pair) and the next
+
+REPEAT_FACTOR = 1.8       # pause = this × length of the French + REPEAT_EXTRA
+REPEAT_EXTRA = 2.5
+REPEAT_MIN = 4.0
 
 # What the voice says around the lesson text, French first.
 DRILL_START = [("fr", "Écoute et répète."), ("it", "Ascolta e ripeti.")]
@@ -151,10 +154,12 @@ def say(voice, text, rate=None):
     return ("say", voice, rate, text)
 
 
-def read(segs, french=FRENCH, gap=0.5):
+def read(segs, french=FRENCH, gap=SENTENCE_GAP):
     steps = []
-    for lang, text in segs:
-        steps += [say(french if lang == "fr" else NARRATOR, text), ("pause", gap)]
+    for i, (lang, text) in enumerate(segs):
+        translated = lang == "fr" and i + 1 < len(segs) and segs[i + 1][0] == "it"
+        steps += [say(french if lang == "fr" else NARRATOR, text),
+                  ("pause", TRANSLATION_GAP if translated else gap)]
     return steps
 
 
@@ -165,15 +170,15 @@ def repeat_script(body):
         m = DRILL_RE.match(text) if kind == "item" else None
         if not m:
             in_drill = False
-            steps += read(segments(text)) + [("pause", 1.0 if kind == "heading" else 0.6)]
+            steps += read(segments(text)) + [("pause", 0.6 if kind == "heading" else 0.2)]
             continue
         if not in_drill:
             steps += read(DRILL_START) + [("pause", 0.5)]
             in_drill = True
         fr, it = clean(m["fr"]), clean(m["it"])
-        steps += [say(FRENCH, fr), ("pause", 0.6), say(NARRATOR, it), ("pause", 0.5)]
+        steps += [say(FRENCH, fr), ("pause", TRANSLATION_GAP), say(NARRATOR, it), ("pause", SENTENCE_GAP)]
         steps += read(segments(m["rest"]))
-        steps += [say(FRENCH, REPEAT), ("pause", 0.3), say(FRENCH, fr, ECHO_RATE), ("repeat_pause",)]
+        steps += [say(FRENCH, REPEAT), ("pause", 0.5), say(FRENCH, fr, ECHO_RATE), ("repeat_pause",)]
     return steps
 
 
@@ -206,10 +211,10 @@ def listen_script(body, voices_spec):
     steps = read(title) + [("pause", 1.0)]
     steps += read(FIRST_LISTEN) + [("pause", 1.0)]
     for voice, segs in lines:
-        steps += read([s for s in segs if s[0] == "fr"], french=voice, gap=0.7)
+        steps += read([s for s in segs if s[0] == "fr"], french=voice, gap=1.0)
     steps += [("pause", 1.5)] + read(SECOND_LISTEN) + [("pause", 1.0)]
     for voice, segs in lines:
-        steps += read(segs, french=voice) + [("pause", 0.6)]
+        steps += read(segs, french=voice) + [("pause", 0.4)]
     steps += [("pause", 1.0)] + read(READ_ALOUD) + [("pause", 1.5)]
     return steps
 
@@ -241,10 +246,21 @@ def duration(path):
 
 
 async def synthesize(voice, rate, text):
-    """Return a cached WAV of the text, generating it if needed."""
+    """Return a cached WAV of the text, without the silence around it."""
+    key = hashlib.sha1(f"{voice}|{rate}|{text}".encode()).hexdigest()
+    trimmed = CACHE / f"{key}.trim.wav"
+    if not trimmed.exists():
+        wav = await download(key, voice, rate, text)
+        # The voices come with up to a second of silence at each end; cut it
+        # (keeping a few ms) so that the pauses are exactly the ones we set.
+        edge = "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.05"
+        ffmpeg("-i", str(wav), "-af", f"{edge},areverse,{edge},areverse", str(trimmed))
+    return trimmed
+
+
+async def download(key, voice, rate, text):
     import edge_tts
 
-    key = hashlib.sha1(f"{voice}|{rate}|{text}".encode()).hexdigest()
     wav = CACHE / f"{key}.wav"
     if wav.exists():
         return wav
