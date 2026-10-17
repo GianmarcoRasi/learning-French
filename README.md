@@ -7,6 +7,7 @@ A French course for Italian speakers, to learn to speak and write French from sc
 | # | Lesson | French only | Topics |
 |---|---|---|---|
 | 1 | [Bonjour !](lessons/01-bonjour.md) | [Bonjour !](lessons/french-only/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
+| 2 | [Qu'est-ce que c'est ?](lessons/02-qu-est-ce-que-c-est.md) | [Qu'est-ce que c'est ?](lessons/french-only/02-qu-est-ce-que-c-est.md) | numbers 0–20, nasal vowels, articles and gender, *c'est* and *il y a*, the verb *avoir*, age |
 
 ## How each lesson works
 
@@ -27,7 +28,7 @@ Conventions used in the text:
 - Everything is written in French — explanations and instructions included — and each
   sentence is followed by its Italian translation in *(italic between parentheses)*.
 - New words are in **bold**.
-- Headings are in French only, without translation.
+- Headings are translated too.
 - The whole lesson has audio, except the solutions and the summary tables.
 
 ### French-only version
@@ -62,7 +63,7 @@ the page is rendered:
 
 ```markdown
 <!-- audio:repeat 01-salutations -->
-### 1. Les salutations
+### 1. Les salutations (*I saluti*)
 
 On salue de façon différente selon la personne. (*Si saluta in modo diverso secondo la persona.*)
 

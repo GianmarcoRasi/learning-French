@@ -268,7 +268,7 @@ def french_only_markdown(text, name):
     """The French-only version of a lesson, as markdown."""
     lines = []
     for line in version(text, french_only=True).splitlines():
-        stripped = re.sub(r"\s*\(\*.+?\*\)", "", line).rstrip()
+        stripped = re.sub(r"\s*\(\*.+?\*\)|\s*\(<i>.+?</i>\)", "", line).rstrip()
         # Keep the lines that are only a translation: exercise items.
         if re.sub(r"^\s*([-*+]|\d+\.)?\s*", "", stripped):
             line = stripped
