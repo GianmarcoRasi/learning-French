@@ -53,8 +53,7 @@ On salue de façon différente selon la personne. (*Si saluta in modo diverso se
 <!-- /audio -->
 ```
 
-- Text is read in French, *(italic in parentheses)* in Italian; **bold** inside the
-  Italian is read in French (for French words quoted in a translation).
+- Text is read in French, *(italic in parentheses)* entirely in Italian.
 - `repeat` blocks: drill items (list items starting with `**French** (*Italiano*)`)
   get the French → Italian → notes → "Répète" → French → pause pattern; everything
   else is read through.

@@ -12,7 +12,7 @@ Each lesson marks the parts to be read aloud with HTML comments:
     <!-- /audio -->
 
 Inside a block, text is French and *(italic in parentheses)* is its Italian
-translation; **bold** inside a translation is French again.
+translation, read entirely by the Italian voice.
 
 - `repeat` blocks are read in order. A list item of the form
   `**French** (*Italiano*) notes` is a drill: French, Italian, notes,
@@ -75,7 +75,6 @@ BLOCK_RE = re.compile(
 DRILL_RE = re.compile(r"^\*\*(?P<fr>[^*]+?)\*\*\s*\(\*(?P<it>.+?)\*\)(?P<rest>.*)$")
 SPEAKER_RE = re.compile(r"^\*\*(?P<speaker>[^*]+?)\s*:\s*\*\*\s*(?P<line>.*)$")
 TRANSLATION_RE = re.compile(r"\(\*(.+?)\*\)")
-BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
 LINK_RE = re.compile(r"\[([^\]]*)\]\([^)]*\)")
 SYMBOL_RE = re.compile("[\U0001F000-\U0001FFFF←-⇿☀-➿️]")
 
@@ -97,15 +96,10 @@ def spoken(text):
 
 
 def split_languages(text):
-    """French text with (*Italian*) translations, **French** inside those."""
+    """French text with (*Italian*) translations, each said in one voice."""
     out, pos = [], 0
     for m in TRANSLATION_RE.finditer(text):
-        out.append(("fr", text[pos:m.start()]))
-        inner = 0
-        for b in BOLD_RE.finditer(m[1]):
-            out += [("it", m[1][inner:b.start()]), ("fr", b[1])]
-            inner = b.end()
-        out.append(("it", m[1][inner:]))
+        out += [("fr", text[pos:m.start()]), ("it", m[1])]
         pos = m.end()
     out.append(("fr", text[pos:]))
     return out
