@@ -27,6 +27,12 @@ VERSIONS = [
     ("french-only", "Seulement en français"),
 ]
 
+KOFI = "https://ko-fi.com/qwark992"
+SUPPORT = (
+    f'<p class="support">Ce cours te plaît ? (<em>Ti piace questo corso?</em>) '
+    f'<a href="{KOFI}">☕ Offre-moi un café</a> (<em>Offrimi un caffè</em>)</p>'
+)
+
 # A paragraph that is only a 🎧 link to a track, as written in the lessons.
 AUDIO_LINK = re.compile(r'<p>🎧 <a href="([^"]+\.mp3)">([^<]+)</a></p>')
 LESSON_LINK = re.compile(r'href="([^":]+)\.md"')
@@ -86,6 +92,7 @@ audio { display: block; width: 100%; margin: 0.6em 0 1em; }
 .lessons .title { font-weight: 600; display: block; margin-bottom: 6px; }
 .lessons a { display: inline-block; margin: 4px 16px 4px 0; }
 .note { color: var(--muted); font-size: 15px; }
+.support { margin-top: 3em; text-align: center; font-size: 15px; color: var(--muted); }
 """
 
 # Only one track plays at a time, and the speed button sets the speed of
@@ -178,7 +185,7 @@ def build(out):
                 '<button id="speed" type="button" aria-label="Vitesse">1×</button>'
                 "</div></nav>"
             )
-            body = render_lesson(md, text) + f"<script>{SCRIPT}</script>"
+            body = render_lesson(md, text) + SUPPORT + f"<script>{SCRIPT}</script>"
             target = out / "lessons" / version / f"{path.stem}.html"
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(page(plain, body, "../../", bar), encoding="utf-8")
@@ -199,6 +206,7 @@ def build(out):
         '<p class="note">Un cours de français pour les italiens. '
         "(<em>Un corso di francese per italiani.</em>)</p>"
         f'<ul class="lessons">{"".join(items)}</ul>'
+        + SUPPORT
     )
     (out / "index.html").write_text(page("Apprendre le français", index, ""), encoding="utf-8")
     (out / "manifest.webmanifest").write_text(
