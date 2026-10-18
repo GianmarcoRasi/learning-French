@@ -1,7 +1,7 @@
 <!-- audio:repeat 00-introduction -->
 # Leçon 3 — Ma famille (*Lezione 3 — La mia famiglia*)
 
-🎧 [00-introduction.mp3](../audio/03-ma-famille/00-introduction.mp3)
+🎧 [00-introduction.mp3](../../audio/french-italian/03-ma-famille/00-introduction.mp3)
 
 **Niveau :** A1 (*Livello: A1*)
 
@@ -17,10 +17,10 @@
 <!-- bilingual -->
 **Comment lire le texte :** le texte est en français, et la traduction italienne suit toujours, en italique et entre parenthèses. (*Come leggere il testo: il testo è in francese, e la traduzione italiana segue sempre, in corsivo e tra parentesi.*) Les mots nouveaux sont en gras. (*Le parole nuove sono in grassetto.*)
 
-Pour réviser, il existe aussi une [version seulement en français](french-only/03-ma-famille.md), avec son audio. (*Per ripassare esiste anche una [versione solo in francese](french-only/03-ma-famille.md), con il suo audio.*)
+Pour réviser, il existe aussi une [version seulement en français](../french-only/03-ma-famille.md), avec son audio. (*Per ripassare esiste anche una [versione solo in francese](../french-only/03-ma-famille.md), con il suo audio.*)
 <!-- /bilingual -->
 <!-- french-only
-**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../03-ma-famille.md). Les mots nouveaux sont en gras.
+**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../french-italian/03-ma-famille.md). Les mots nouveaux sont en gras.
 -->
 <!-- /audio -->
 
@@ -35,7 +35,7 @@ Pour réviser, il existe aussi une [version seulement en français](french-only/
 <!-- audio:repeat 01-la-famille -->
 ### 1. La famille (*La famiglia*)
 
-🎧 [01-la-famille.mp3](../audio/03-ma-famille/01-la-famille.mp3)
+🎧 [01-la-famille.mp3](../../audio/french-italian/03-ma-famille/01-la-famille.mp3)
 
 - **la famille** (*la famiglia*)
 - **le père** (*il padre*)
@@ -66,7 +66,7 @@ Pour réviser, il existe aussi une [version seulement en français](french-only/
 <!-- audio:repeat 02-les-possessifs -->
 ### 2. Les possessifs (*I possessivi*)
 
-🎧 [02-les-possessifs.mp3](../audio/03-ma-famille/02-les-possessifs.mp3)
+🎧 [02-les-possessifs.mp3](../../audio/french-italian/03-ma-famille/02-les-possessifs.mp3)
 
 Le possessif change selon le mot qui suit : masculin, féminin ou pluriel. (*Il possessivo cambia secondo la parola che segue: maschile, femminile o plurale.*) Attention : en français, il n'y a jamais d'article devant le possessif. On dit **mes parents**, et jamais « les mes parents ». (*Attenzione: in francese non c'è mai l'articolo davanti al possessivo. Si dice **mes parents**, i miei genitori, e mai "les mes parents".*)
 
@@ -91,7 +91,7 @@ Devant un mot féminin qui commence par une voyelle, on utilise **mon**, **ton**
 <!-- audio:repeat 03-les-verbes-en-er -->
 ### 3. Les verbes en -er (*I verbi in -er*)
 
-🎧 [03-les-verbes-en-er.mp3](../audio/03-ma-famille/03-les-verbes-en-er.mp3)
+🎧 [03-les-verbes-en-er.mp3](../../audio/french-italian/03-ma-famille/03-les-verbes-en-er.mp3)
 
 Beaucoup de verbes français se terminent en `er`, comme **parler**. (*Molti verbi francesi finiscono in `er`, come **parler**, parlare.*) Ils se conjuguent tous de la même façon. (*Si coniugano tutti allo stesso modo.*)
 
@@ -137,7 +137,7 @@ Pour dire ce qu'on aime, on utilise **aimer** avec l'article défini : **j'aime 
 <!-- audio:repeat 04-la-negation -->
 ### 4. La négation (*La negazione*)
 
-🎧 [04-la-negation.mp3](../audio/03-ma-famille/04-la-negation.mp3)
+🎧 [04-la-negation.mp3](../../audio/french-italian/03-ma-famille/04-la-negation.mp3)
 
 Pour la forme négative, on met **ne** avant le verbe, et **pas** après le verbe. (*Per la forma negativa si mette **ne** prima del verbo, e **pas** dopo il verbo.*) Devant une voyelle, **ne** devient **n'**. (*Davanti a una vocale **ne** diventa **n'**.*)
 
@@ -161,7 +161,7 @@ Mais avec **le**, **la** et **les**, l'article ne change pas : **je n'aime pas l
 <!-- audio:repeat 05-les-questions -->
 ### 5. Poser des questions (*Fare domande*)
 
-🎧 [05-les-questions.mp3](../audio/03-ma-famille/05-les-questions.mp3)
+🎧 [05-les-questions.mp3](../../audio/french-italian/03-ma-famille/05-les-questions.mp3)
 
 Il y a deux façons simples de poser une question. (*Ci sono due modi semplici per fare una domanda.*) On peut monter la voix à la fin de la phrase, comme en italien. (*Si può alzare il tono della voce alla fine della frase, come in italiano.*) On peut aussi mettre **est-ce que** au début de la phrase. (*Si può anche mettere **est-ce que** all'inizio della frase.*) Devant une voyelle, **est-ce que** devient **est-ce qu'**. (*Davanti a una vocale **est-ce que** diventa **est-ce qu'**.*)
 
@@ -216,7 +216,7 @@ je parle · tu parles · il / elle parle · nous parlons · vous parlez · ils /
 <!-- audio:repeat 06-exercices -->
 ## Exercices (*Esercizi*)
 
-🎧 [06-exercices.mp3](../audio/03-ma-famille/06-exercices.mp3)
+🎧 [06-exercices.mp3](../../audio/french-italian/03-ma-famille/06-exercices.mp3)
 
 Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses sans regarder le texte, puis vérifie avec les solutions à la fin. (*Scrivi le risposte senza guardare il testo, poi controlla con le soluzioni alla fine.*)
 
@@ -336,7 +336,7 @@ b) J'aime le café, la mer, le cinéma, le chocolat et voyager. Je n'aime pas le
 <!-- audio:repeat 07-lire-et-ecouter -->
 ## Partie 2 — Lire et écouter (*Parte 2 — Leggere e ascoltare*)
 
-🎧 [07-lire-et-ecouter.mp3](../audio/03-ma-famille/07-lire-et-ecouter.mp3)
+🎧 [07-lire-et-ecouter.mp3](../../audio/french-italian/03-ma-famille/07-lire-et-ecouter.mp3)
 
 Pour chaque texte : (*Per ogni testo:*)
 
@@ -356,7 +356,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 08-la-photo | Léa=f; Marco=m -->
 ### Dialogue 1 — La photo (*Dialogo 1 — La foto*)
 
-🎧 [08-la-photo.mp3](../audio/03-ma-famille/08-la-photo.mp3)
+🎧 [08-la-photo.mp3](../../audio/french-italian/03-ma-famille/08-la-photo.mp3)
 
 - **Marco :** C'est qui, sur la photo ? (*Chi sono, nella foto?*)
 - **Léa :** C'est ma famille. Voici mon père et ma mère. (*È la mia famiglia. Ecco mio padre e mia madre.*)
@@ -385,7 +385,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 09-une-enquete | Enquêtrice=f; M. Lambert=m -->
 ### Dialogue 2 — Une enquête (*Dialogo 2 — Un sondaggio*)
 
-🎧 [09-une-enquete.mp3](../audio/03-ma-famille/09-une-enquete.mp3)
+🎧 [09-une-enquete.mp3](../../audio/french-italian/03-ma-famille/09-une-enquete.mp3)
 
 - **Enquêtrice :** Bonjour, monsieur. Est-ce que vous avez cinq minutes ? (*Buongiorno, signore. Ha cinque minuti?*)
 - **M. Lambert :** Oui, bien sûr. (*Sì, certo.*)
@@ -414,7 +414,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 10-la-famille-d-ines -->
 ### Texte — La famille d'Inès (*Testo — La famiglia di Inès*)
 
-🎧 [10-la-famille-d-ines.mp3](../audio/03-ma-famille/10-la-famille-d-ines.mp3)
+🎧 [10-la-famille-d-ines.mp3](../../audio/french-italian/03-ma-famille/10-la-famille-d-ines.mp3)
 
 Je m'appelle Inès. (*Mi chiamo Inès.*) J'ai seize ans, et j'habite à Marseille avec ma famille. (*Ho sedici anni, e abito a Marsiglia con la mia famiglia.*) Mon père s'appelle Karim. (*Mio padre si chiama Karim.*) Il est professeur : il enseigne l'histoire. (*È professore: insegna storia.*) Ma mère s'appelle Nathalie. Elle travaille dans une banque. (*Mia madre si chiama Nathalie. Lavora in una banca.*) J'ai deux frères, Adam et Noé. (*Ho due fratelli, Adam e Noé.*) Ils ont douze ans : ce sont des jumeaux ! (*Hanno dodici anni: sono gemelli!*) Nous avons aussi un chat, Caramel. (*Abbiamo anche un gatto, Caramel.*) Le week-end, mes grands-parents mangent avec nous. (*Il fine settimana i miei nonni mangiano con noi.*) Ma grand-mère parle arabe et français. (*Mia nonna parla arabo e francese.*) J'aime beaucoup ma famille ! (*Voglio molto bene alla mia famiglia!*)
 <!-- /audio -->

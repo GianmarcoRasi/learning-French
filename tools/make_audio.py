@@ -22,7 +22,8 @@ translation, read entirely by the Italian voice.
   label (`**Léa :** ...`); speakers get a female (f) or male (m) voice as
   declared after the `|`.
 
-Blocks with the same name go into the same track, audio/<lesson>/<name>.mp3.
+Blocks with the same name go into the same track,
+audio/french-italian/<lesson>/<name>.mp3.
 
 Each lesson also has a French-only version, for review: the script writes it
 to lessons/french-only/<lesson>.md, without the translations, and builds its
@@ -33,8 +34,8 @@ comment appears only in it.
 
 Usage:
     python tools/make_audio.py                     # all lessons
-    python tools/make_audio.py lessons/01-bonjour.md
-    python tools/make_audio.py --dry-run lessons/01-bonjour.md
+    python tools/make_audio.py lessons/french-italian/01-bonjour.md
+    python tools/make_audio.py --dry-run lessons/french-italian/01-bonjour.md
 """
 
 import argparse
@@ -273,8 +274,8 @@ def french_only_markdown(text, name):
         if re.sub(r"^\s*([-*+]|\d+\.)?\s*", "", stripped):
             line = stripped
         lines.append(line)
-    body = "\n".join(lines).replace(f"](../audio/{name}/", f"](../../audio/french-only/{name}/")
-    return (f"<!-- Generated from lessons/{name}.md by tools/make_audio.py: "
+    body = "\n".join(lines).replace(f"](../../audio/french-italian/{name}/", f"](../../audio/french-only/{name}/")
+    return (f"<!-- Generated from lessons/french-italian/{name}.md by tools/make_audio.py: "
             f"edit that file, not this one. -->\n{body.rstrip()}\n")
 
 
@@ -371,14 +372,14 @@ async def main():
     parser.add_argument("--only", help="generate only the track with this name")
     args = parser.parse_args()
 
-    lessons = args.lessons or sorted((ROOT / "lessons").glob("*.md"))
+    lessons = args.lessons or sorted((ROOT / "lessons" / "french-italian").glob("*.md"))
     for lesson in lessons:
         text = lesson.read_text(encoding="utf-8")
         if not args.dry_run:
             out = ROOT / "lessons" / "french-only" / lesson.name
             out.parent.mkdir(exist_ok=True)
             out.write_text(french_only_markdown(text, lesson.stem), encoding="utf-8")
-        for french_only, folder in [(False, ROOT / "audio"), (True, ROOT / "audio" / "french-only")]:
+        for french_only, folder in [(False, ROOT / "audio" / "french-italian"), (True, ROOT / "audio" / "french-only")]:
             for name, steps in lesson_tracks(text, french_only).items():
                 if args.only and name != args.only:
                     continue

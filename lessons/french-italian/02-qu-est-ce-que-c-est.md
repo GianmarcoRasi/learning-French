@@ -1,7 +1,7 @@
 <!-- audio:repeat 00-introduction -->
 # Leçon 2 — Qu'est-ce que c'est ? (*Lezione 2 — Che cos'è?*)
 
-🎧 [00-introduction.mp3](../audio/02-qu-est-ce-que-c-est/00-introduction.mp3)
+🎧 [00-introduction.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/00-introduction.mp3)
 
 **Niveau :** A1 (*Livello: A1*)
 
@@ -17,10 +17,10 @@
 <!-- bilingual -->
 **Comment lire le texte :** le texte est en français, et la traduction italienne suit toujours, en italique et entre parenthèses. (*Come leggere il testo: il testo è in francese, e la traduzione italiana segue sempre, in corsivo e tra parentesi.*) Les mots nouveaux sont en gras. (*Le parole nuove sono in grassetto.*)
 
-Pour réviser, il existe aussi une [version seulement en français](french-only/02-qu-est-ce-que-c-est.md), avec son audio. (*Per ripassare esiste anche una [versione solo in francese](french-only/02-qu-est-ce-que-c-est.md), con il suo audio.*)
+Pour réviser, il existe aussi une [version seulement en français](../french-only/02-qu-est-ce-que-c-est.md), avec son audio. (*Per ripassare esiste anche una [versione solo in francese](../french-only/02-qu-est-ce-que-c-est.md), con il suo audio.*)
 <!-- /bilingual -->
 <!-- french-only
-**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../02-qu-est-ce-que-c-est.md). Les mots nouveaux sont en gras.
+**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../french-italian/02-qu-est-ce-que-c-est.md). Les mots nouveaux sont en gras.
 -->
 <!-- /audio -->
 
@@ -35,7 +35,7 @@ Pour réviser, il existe aussi une [version seulement en français](french-only/
 <!-- audio:repeat 01-nombres -->
 ### 1. Les nombres de 0 à 20 (*I numeri da 0 a 20*)
 
-🎧 [01-nombres.mp3](../audio/02-qu-est-ce-que-c-est/01-nombres.mp3)
+🎧 [01-nombres.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/01-nombres.mp3)
 
 - **zéro** (*zero*)
 - **un** (*uno*)
@@ -74,7 +74,7 @@ Quand **six** et **dix** sont seuls, le `x` final se prononce comme un `s`. (*Qu
 <!-- audio:repeat 02-voyelles-nasales -->
 ### 2. Les voyelles nasales (*Le vocali nasali*)
 
-🎧 [02-voyelles-nasales.mp3](../audio/02-qu-est-ce-que-c-est/02-voyelles-nasales.mp3)
+🎧 [02-voyelles-nasales.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/02-voyelles-nasales.mp3)
 
 Le français a des voyelles que l'italien n'a pas : les voyelles nasales. (*Il francese ha delle vocali che l'italiano non ha: le vocali nasali.*) L'air passe aussi par le nez, et on ne prononce pas le `n` ou le `m` qui suit la voyelle. (*L'aria passa anche dal naso, e la `n` o la `m` che segue la vocale non si pronuncia.*)
 
@@ -111,7 +111,7 @@ Attention : s'il y a une voyelle ou un deuxième `n` après le `n`, la voyelle n
 <!-- audio:repeat 03-articles -->
 ### 3. Les articles (*Gli articoli*)
 
-🎧 [03-articles.mp3](../audio/02-qu-est-ce-que-c-est/03-articles.mp3)
+🎧 [03-articles.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/03-articles.mp3)
 
 Comme en italien, il y a deux genres en français : le masculin et le féminin. (*Come in italiano, in francese ci sono due generi: il maschile e il femminile.*) Mais attention : le genre n'est pas toujours le même qu'en italien. (*Ma attenzione: il genere non è sempre lo stesso dell'italiano.*) Par exemple, **la table**, **la mer** et **la fleur** sont féminins, et **le sac** est masculin. (*Per esempio **la table**, il tavolo, **la mer**, il mare, e **la fleur**, il fiore, sono femminili, e **le sac**, la borsa, è maschile.*) Apprends toujours un mot nouveau avec son article. (*Impara sempre una parola nuova insieme al suo articolo.*)
 
@@ -144,7 +144,7 @@ Pour faire le pluriel, en général, on ajoute un `s`, mais il est muet : **livr
 <!-- audio:repeat 04-c-est-il-y-a -->
 ### 4. C'est, il y a (*È, c'è*)
 
-🎧 [04-c-est-il-y-a.mp3](../audio/02-qu-est-ce-que-c-est/04-c-est-il-y-a.mp3)
+🎧 [04-c-est-il-y-a.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/04-c-est-il-y-a.mp3)
 
 Pour demander ce qu'est une chose, on dit **Qu'est-ce que c'est ?** (*Per chiedere che cos'è una cosa si dice **Qu'est-ce que c'est ?**, che cos'è?*) Pour répondre, on utilise **c'est** au singulier, et **ce sont** au pluriel. (*Per rispondere si usa **c'est**, è, al singolare, e **ce sont**, sono, al plurale.*)
 
@@ -173,7 +173,7 @@ Pour dire qu'une chose se trouve dans un lieu, on utilise **il y a**. (*Per dire
 <!-- audio:repeat 05-avoir -->
 ### 5. Le verbe avoir (*Il verbo avere*)
 
-🎧 [05-avoir.mp3](../audio/02-qu-est-ce-que-c-est/05-avoir.mp3)
+🎧 [05-avoir.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/05-avoir.mp3)
 
 - **j'ai** (*io ho*)
 - **tu as** (*tu hai*)
@@ -234,7 +234,7 @@ j'ai · tu as · il / elle a · nous avons · vous avez · ils / elles ont
 <!-- audio:repeat 06-exercices -->
 ## Exercices (*Esercizi*)
 
-🎧 [06-exercices.mp3](../audio/02-qu-est-ce-que-c-est/06-exercices.mp3)
+🎧 [06-exercices.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/06-exercices.mp3)
 
 Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses sans regarder le texte, puis vérifie avec les solutions à la fin. (*Scrivi le risposte senza guardare il testo, poi controlla con le soluzioni alla fine.*)
 
@@ -364,7 +364,7 @@ b) Dans mon sac, il y a un téléphone, des clés et un livre. Il y a aussi une 
 <!-- audio:repeat 07-lire-et-ecouter -->
 ## Partie 2 — Lire et écouter (*Parte 2 — Leggere e ascoltare*)
 
-🎧 [07-lire-et-ecouter.mp3](../audio/02-qu-est-ce-que-c-est/07-lire-et-ecouter.mp3)
+🎧 [07-lire-et-ecouter.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/07-lire-et-ecouter.mp3)
 
 Pour chaque texte : (*Per ogni testo:*)
 
@@ -384,7 +384,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 08-au-marche | Marchand=m; Cliente=f -->
 ### Dialogue 1 — Au marché (*Dialogo 1 — Al mercato*)
 
-🎧 [08-au-marche.mp3](../audio/02-qu-est-ce-que-c-est/08-au-marche.mp3)
+🎧 [08-au-marche.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/08-au-marche.mp3)
 
 - **Marchand :** Bonjour, madame ! (*Buongiorno, signora!*)
 - **Cliente :** Bonjour, monsieur. Qu'est-ce que c'est ? (*Buongiorno, signore. Che cosa sono?*)
@@ -412,7 +412,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 09-a-l-universite | Hugo=m; Emma=f -->
 ### Dialogue 2 — À l'université (*Dialogo 2 — All'università*)
 
-🎧 [09-a-l-universite.mp3](../audio/02-qu-est-ce-que-c-est/09-a-l-universite.mp3)
+🎧 [09-a-l-universite.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/09-a-l-universite.mp3)
 
 - **Hugo :** Salut ! Tu es nouvelle ? (*Ciao! Sei nuova?*)
 - **Emma :** Oui. Je m'appelle Emma. Et toi ? (*Sì. Mi chiamo Emma. E tu?*)
@@ -439,7 +439,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 10-ma-chambre -->
 ### Texte — Ma chambre (*Testo — La mia camera*)
 
-🎧 [10-ma-chambre.mp3](../audio/02-qu-est-ce-que-c-est/10-ma-chambre.mp3)
+🎧 [10-ma-chambre.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/10-ma-chambre.mp3)
 
 Je m'appelle Chloé, et j'ai dix-huit ans. (*Mi chiamo Chloé, e ho diciotto anni.*) Je suis étudiante à Bordeaux. (*Sono studentessa a Bordeaux.*) Voici ma chambre. (*Ecco la mia camera.*) Elle est petite, mais elle est jolie. (*È piccola, ma è carina.*) Il y a un lit, une table et deux chaises. (*Ci sono un letto, un tavolo e due sedie.*) Sur la table, il y a un ordinateur et des livres. (*Sul tavolo ci sono un computer e dei libri.*) Sous le lit, il y a un sac. (*Sotto il letto c'è una borsa.*) Et dans le sac, il y a… un chat ! (*E nella borsa c'è… un gatto!*) Il s'appelle Minou, et il a deux ans. (*Si chiama Minou, e ha due anni.*)
 <!-- /audio -->
