@@ -12,7 +12,8 @@ Each lesson marks the parts to be read aloud with HTML comments:
     <!-- /audio -->
 
 Inside a block, text is French and *(italic in parentheses)* is its Italian
-translation, read entirely by the Italian voice.
+translation, read by the Italian voice; the French words quoted in it, in
+**bold** or `code`, are read by the French voice.
 
 - `repeat` blocks are read in order. A list item of the form
   `**French** (*Italiano*) notes` is a drill: French, Italian, notes,
@@ -63,11 +64,13 @@ ECHO_RATE = "-20%"        # the French repeated right before the pause
 ITALIAN_RATE = "+0%"
 
 TRANSLATION_GAP = 0.25    # between a French sentence and its Italian translation
-SENTENCE_GAP = 0.8        # between one sentence (or French/Italian pair) and the next
+SENTENCE_GAP = 0.5        # between one sentence (or French/Italian pair) and the next
+FULL_STOP_GAP = 0.3       # after a full stop inside a piece of text in one language
+INLINE_GAP = 0.08         # around a French word quoted in an Italian sentence
 
-REPEAT_FACTOR = 1.8       # pause = this × length of the French + REPEAT_EXTRA
-REPEAT_EXTRA = 2.5
-REPEAT_MIN = 4.0
+REPEAT_FACTOR = 1.2       # pause = this × length of the French + REPEAT_EXTRA
+REPEAT_EXTRA = 1.0
+REPEAT_MIN = 2.0
 
 # What the voice says around the lesson text, French first.
 DRILL_START = [("fr", "Écoute et répète."), ("it", "Ascolta e ripeti.")]
@@ -87,6 +90,9 @@ BLOCK_RE = re.compile(
 DRILL_RE = re.compile(r"^\*\*(?P<fr>[^*]+?)\*\*\s*\(\*(?P<it>.+?)\*\)(?P<rest>.*)$")
 SPEAKER_RE = re.compile(r"^\*\*(?P<speaker>[^*]+?)\s*:\s*\*\*\s*(?P<line>.*)$")
 TRANSLATION_RE = re.compile(r"\(\*(.+?)\*\)")
+QUOTE_RE = re.compile(r"\*\*([^*]+?)\*\*|`([^`]+)`")
+SENTENCE_END_RE = re.compile(r"(?<=[.!?])\s+")
+QUOTE_START, QUOTE_END = "\x01", "\x02"   # mark the French quoted in a translation
 BILINGUAL_RE = re.compile(r"<!--\s*bilingual\s*-->\n?(.*?)<!--\s*/bilingual\s*-->\n?", re.S)
 FRENCH_ONLY_RE = re.compile(r"<!--\s*french-only\s*\n(.*?)-->\n?", re.S)
 LINK_RE = re.compile(r"\[([^\]]*)\]\([^)]*\)")
@@ -97,6 +103,7 @@ SYMBOL_RE = re.compile("[\U0001F000-\U0001FFFF←-⇿☀-➿️]")
 
 def clean(text):
     text = LINK_RE.sub(r"\1", text)
+    text = QUOTE_RE.sub(lambda m: QUOTE_START + (m[1] or m[2]) + QUOTE_END, text)
     text = SYMBOL_RE.sub("", text)
     text = re.sub(r"_{2,}", "…", text)            # blanks in the exercises
     text = re.sub(r"[*`#]", "", text)
@@ -163,21 +170,40 @@ def elements(body):
 
 # ---------------------------------------------------------------- scripts
 #
-# A script is a list of steps: ("say", voice, rate, text), ("pause", seconds)
-# or ("repeat_pause",), a pause sized on the last thing said.
+# A script is a list of steps: ("say", voice, rate, text), ("pause", seconds),
+# ("gap", seconds), a pause inside one thing said, or ("repeat_pause",), a
+# pause sized on what was said since the last ("pause", ...).
 
 def say(voice, text, rate=None):
-    if rate is None:
-        rate = ITALIAN_RATE if voice == NARRATOR else FRENCH_RATE
-    return ("say", voice, rate, text)
+    """Steps to say a piece of text, one sentence at a time.
+
+    The voices pause for a long time at a full stop, so each sentence is said
+    on its own and followed by a shorter gap. In Italian, the quoted French
+    words are said by the French voice.
+    """
+    steps = []
+    parts = re.split(f"{QUOTE_START}|{QUOTE_END}", text)
+    if voice != NARRATOR:
+        parts = ["".join(parts)]
+    for i, part in enumerate(parts):
+        quoted = i % 2 == 1   # French quoted in the Italian
+        v = FRENCH if quoted else voice
+        r = rate or (ITALIAN_RATE if v == NARRATOR else FRENCH_RATE)
+        for j, sentence in enumerate(SENTENCE_END_RE.split(part.strip().lstrip(",;:. "))):
+            if not spoken(sentence):
+                continue
+            if steps:
+                steps.append(("gap", FULL_STOP_GAP if j else INLINE_GAP))
+            steps.append(("say", v, r, sentence))
+    return steps
 
 
 def read(segs, french=FRENCH, gap=SENTENCE_GAP):
     steps = []
     for i, (lang, text) in enumerate(segs):
         translated = lang == "fr" and i + 1 < len(segs) and segs[i + 1][0] == "it"
-        steps += [say(french if lang == "fr" else NARRATOR, text),
-                  ("pause", TRANSLATION_GAP if translated else gap)]
+        steps += say(french if lang == "fr" else NARRATOR, text)
+        steps.append(("pause", TRANSLATION_GAP if translated else gap))
     return steps
 
 
@@ -192,18 +218,18 @@ def repeat_script(body, french_only=False):
         m = DRILL_RE.match(text) if kind == "item" else None
         if not m:
             in_drill = False
-            steps += read(segments(text, french_only)) + [("pause", 0.6 if kind == "heading" else 0.2)]
+            steps += read(segments(text, french_only)) + [("pause", 0.4 if kind == "heading" else 0.1)]
             continue
         if not in_drill:
-            steps += read(french(DRILL_START) if french_only else DRILL_START) + [("pause", 0.5)]
+            steps += read(french(DRILL_START) if french_only else DRILL_START) + [("pause", 0.3)]
             in_drill = True
         fr, it = clean(m["fr"]), clean(m["it"])
         if french_only:
-            steps += [say(FRENCH, fr), ("pause", SENTENCE_GAP)]
+            steps += say(FRENCH, fr) + [("pause", SENTENCE_GAP)]
         else:
-            steps += [say(FRENCH, fr), ("pause", TRANSLATION_GAP), say(NARRATOR, it), ("pause", SENTENCE_GAP)]
+            steps += say(FRENCH, fr) + [("pause", TRANSLATION_GAP)] + say(NARRATOR, it) + [("pause", SENTENCE_GAP)]
         steps += read(segments(m["rest"], french_only))
-        steps += [say(FRENCH, REPEAT), ("pause", 0.5), say(FRENCH, fr, ECHO_RATE), ("repeat_pause",)]
+        steps += say(FRENCH, REPEAT) + [("pause", 0.3)] + say(FRENCH, fr, ECHO_RATE) + [("repeat_pause",)]
     return steps
 
 
@@ -233,16 +259,16 @@ def listen_script(body, voices_spec, french_only=False):
             voice, text = voices.get(m["speaker"], FRENCH), m["line"]
         lines.append((voice, segments(text)))
 
-    steps = read(title) + [("pause", 1.0)]
-    steps += read(ONLY_LISTEN if french_only else FIRST_LISTEN) + [("pause", 1.0)]
+    steps = read(title) + [("pause", 0.7)]
+    steps += read(ONLY_LISTEN if french_only else FIRST_LISTEN) + [("pause", 0.7)]
     for voice, segs in lines:
-        steps += read(french(segs), french=voice, gap=1.0)
+        steps += read(french(segs), french=voice, gap=0.7)
     if french_only:
-        return steps + [("pause", 1.5)] + read(french(READ_ALOUD)) + [("pause", 1.5)]
-    steps += [("pause", 1.5)] + read(SECOND_LISTEN) + [("pause", 1.0)]
+        return steps + [("pause", 1.0)] + read(french(READ_ALOUD)) + [("pause", 1.5)]
+    steps += [("pause", 1.0)] + read(SECOND_LISTEN) + [("pause", 0.7)]
     for voice, segs in lines:
-        steps += read(segs, french=voice) + [("pause", 0.4)]
-    steps += [("pause", 1.0)] + read(READ_ALOUD) + [("pause", 1.5)]
+        steps += read(segs, french=voice) + [("pause", 0.3)]
+    steps += [("pause", 0.7)] + read(READ_ALOUD) + [("pause", 1.5)]
     return steps
 
 
@@ -341,9 +367,13 @@ async def build_track(steps, out):
         for step in steps:
             if step[0] == "say":
                 wav = await synthesize(*step[1:])
-                last = duration(wav)
+                last += duration(wav)
                 parts.append(wav)
+            elif step[0] == "gap":
+                last += step[1]
+                parts.append(silence(step[1], tmp))
             elif step[0] == "pause":
+                last = 0.0
                 parts.append(silence(step[1], tmp))
             else:
                 parts.append(silence(max(REPEAT_MIN, last * REPEAT_FACTOR + REPEAT_EXTRA), tmp))
@@ -359,7 +389,7 @@ def print_script(name, steps):
     for step in steps:
         if step[0] == "say":
             print(f"  [{step[1]} {step[2]}] {step[3]}")
-        elif step[0] == "pause":
+        elif step[0] in ("pause", "gap"):
             print(f"  ... {step[1]}s")
         else:
             print("  ... (time to repeat)")
