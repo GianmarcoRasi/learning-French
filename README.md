@@ -96,7 +96,12 @@ On salue de façon différente selon la personne. (*Si saluta in modo diverso se
 <!-- /audio -->
 ```
 
-- Text is read in French, *(italic in parentheses)* entirely in Italian.
+- Text is read in French, *(italic in parentheses)* in Italian. French words quoted
+  inside the Italian, in **bold** or `code`, are read by the French voice, so the
+  Italian voice never pronounces French.
+- Each sentence is synthesized on its own and followed by a short gap, because the
+  voices pause too long at a full stop. The pause sizes are constants at the top of
+  `tools/make_audio.py`.
 - `repeat` blocks: drill items (list items starting with `**French** (*Italiano*)`)
   get the French → Italian → notes → "Répète" → French → pause pattern; everything
   else is read through.
