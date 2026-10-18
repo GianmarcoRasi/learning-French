@@ -1,4 +1,4 @@
-<!-- Generated from lessons/02-qu-est-ce-que-c-est.md by tools/make_audio.py: edit that file, not this one. -->
+<!-- Generated from lessons/french-italian/02-qu-est-ce-que-c-est.md by tools/make_audio.py: edit that file, not this one. -->
 <!-- audio:repeat 00-introduction -->
 # Leçon 2 — Qu'est-ce que c'est ?
 
@@ -15,7 +15,7 @@
 - utiliser les articles, et reconnaître le genre des mots ;
 - conjuguer le verbe **avoir**, et dire ton âge.
 
-**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../02-qu-est-ce-que-c-est.md). Les mots nouveaux sont en gras.
+**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../french-italian/02-qu-est-ce-que-c-est.md). Les mots nouveaux sont en gras.
 <!-- /audio -->
 
 ---

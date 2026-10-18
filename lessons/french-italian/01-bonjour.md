@@ -1,7 +1,7 @@
 <!-- audio:repeat 00-introduction -->
 # Leçon 1 — Bonjour ! (*Lezione 1 — Buongiorno!*)
 
-🎧 [00-introduction.mp3](../audio/01-bonjour/00-introduction.mp3)
+🎧 [00-introduction.mp3](../../audio/french-italian/01-bonjour/00-introduction.mp3)
 
 **Niveau :** A1 (*Livello: A1*)
 
@@ -17,10 +17,10 @@
 <!-- bilingual -->
 **Comment lire le texte :** le texte est en français, et la traduction italienne suit toujours, en italique et entre parenthèses. (*Come leggere il testo: il testo è in francese, e la traduzione italiana segue sempre, in corsivo e tra parentesi.*) Les mots nouveaux sont en gras. (*Le parole nuove sono in grassetto.*)
 
-Pour réviser, il existe aussi une [version seulement en français](french-only/01-bonjour.md), avec son audio. (*Per ripassare esiste anche una [versione solo in francese](french-only/01-bonjour.md), con il suo audio.*)
+Pour réviser, il existe aussi une [version seulement en français](../french-only/01-bonjour.md), avec son audio. (*Per ripassare esiste anche una [versione solo in francese](../french-only/01-bonjour.md), con il suo audio.*)
 <!-- /bilingual -->
 <!-- french-only
-**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../01-bonjour.md). Les mots nouveaux sont en gras.
+**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../french-italian/01-bonjour.md). Les mots nouveaux sont en gras.
 -->
 <!-- /audio -->
 
@@ -40,7 +40,7 @@ Chaque section a une piste audio. Pour chaque mot ou chaque phrase, la voix lit 
 <!-- audio:repeat 01-salutations -->
 ### 1. Les salutations (*I saluti*)
 
-🎧 [01-salutations.mp3](../audio/01-bonjour/01-salutations.mp3)
+🎧 [01-salutations.mp3](../../audio/french-italian/01-bonjour/01-salutations.mp3)
 
 En français, on salue de façon différente selon le moment de la journée et selon la personne. (*In francese si saluta in modo diverso secondo il momento della giornata e secondo la persona.*)
 
@@ -76,7 +76,7 @@ En France, c'est très poli d'ajouter **madame** ou **monsieur** après la salut
 <!-- audio:repeat 02-prononciation -->
 ### 2. La prononciation (*La pronuncia*)
 
-🎧 [02-prononciation.mp3](../audio/01-bonjour/02-prononciation.mp3)
+🎧 [02-prononciation.mp3](../../audio/french-italian/01-bonjour/02-prononciation.mp3)
 
 En français, beaucoup de lettres finales sont muettes : on les écrit, mais on ne les prononce pas. (*In francese molte lettere finali sono mute: si scrivono, ma non si pronunciano.*) En général, le `e` final et les consonnes `s`, `t`, `d`, `x` et `p` sont muets. (*Di solito la `e` finale e le consonanti `s`, `t`, `d`, `x` e `p` sono mute.*)
 
@@ -116,7 +116,7 @@ Le `u` français est un son qui n'existe pas en italien. (*La `u` francese è un
 <!-- audio:repeat 03-tu-ou-vous -->
 ### 3. Tu ou vous ? (*Tu o Lei?*)
 
-🎧 [03-tu-ou-vous.mp3](../audio/01-bonjour/03-tu-ou-vous.mp3)
+🎧 [03-tu-ou-vous.mp3](../../audio/french-italian/01-bonjour/03-tu-ou-vous.mp3)
 
 Avec les amis, la famille et les enfants, on utilise **tu**. (*Con gli amici, la famiglia e i bambini si usa **tu**.*) Avec les personnes que tu ne connais pas, au travail, ou avec les personnes plus âgées, on utilise **vous**. (*Con le persone che non conosci, al lavoro, o con le persone più anziane, si usa **vous**.*) Attention : en français, la forme de politesse n'est pas la troisième personne, comme en italien. C'est **vous**. (*Attenzione: in francese la forma di cortesia non è la terza persona, come il nostro Lei, ma **vous**, come il vecchio voi italiano.*) **Vous** est aussi le pluriel de **tu**, quand tu parles à plusieurs personnes. (***Vous** è anche il plurale di **tu**, quando parli a più persone.*)
 
@@ -140,7 +140,7 @@ Avec les amis, la famille et les enfants, on utilise **tu**. (*Con gli amici, la
 <!-- audio:repeat 04-se-presenter -->
 ### 4. Se présenter (*Presentarsi*)
 
-🎧 [04-se-presenter.mp3](../audio/01-bonjour/04-se-presenter.mp3)
+🎧 [04-se-presenter.mp3](../../audio/french-italian/01-bonjour/04-se-presenter.mp3)
 
 - **Je m'appelle Marco.** (*Mi chiamo Marco.*)
 - **Comment tu t'appelles ?** (*Come ti chiami?*) — Informel. (*Informale.*)
@@ -163,7 +163,7 @@ Devant une voyelle ou un `h` muet, **je** devient **j'** : on dit **j'habite**, 
 <!-- audio:repeat 05-etre -->
 ### 5. Le verbe être (*Il verbo essere*)
 
-🎧 [05-etre.mp3](../audio/01-bonjour/05-etre.mp3)
+🎧 [05-etre.mp3](../../audio/french-italian/01-bonjour/05-etre.mp3)
 
 Une différence importante avec l'italien : en français, le pronom sujet est obligatoire. (*Una differenza importante con l'italiano: in francese il pronome soggetto è obbligatorio.*) On dit toujours **je suis**, jamais **suis** tout seul. (*Si dice sempre **je suis**, mai **suis** da solo, come il nostro "sono".*) Pourquoi ? Parce que beaucoup de formes du verbe se prononcent de la même façon. (*Perché? Perché molte forme del verbo si pronunciano allo stesso modo.*)
 
@@ -213,7 +213,7 @@ je suis · tu es · il / elle est · nous sommes · vous êtes · ils / elles so
 <!-- audio:repeat 06-exercices -->
 ## Exercices (*Esercizi*)
 
-🎧 [06-exercices.mp3](../audio/01-bonjour/06-exercices.mp3)
+🎧 [06-exercices.mp3](../../audio/french-italian/01-bonjour/06-exercices.mp3)
 
 Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses sans regarder le texte, puis vérifie avec les solutions à la fin. (*Scrivi le risposte senza guardare il testo, poi controlla con le soluzioni alla fine.*)
 
@@ -319,7 +319,7 @@ b)
 <!-- audio:repeat 07-lire-et-ecouter -->
 ## Partie 2 — Lire et écouter (*Parte 2 — Leggere e ascoltare*)
 
-🎧 [07-lire-et-ecouter.mp3](../audio/01-bonjour/07-lire-et-ecouter.mp3)
+🎧 [07-lire-et-ecouter.mp3](../../audio/french-italian/01-bonjour/07-lire-et-ecouter.mp3)
 
 Pour chaque texte : (*Per ogni testo:*)
 
@@ -339,7 +339,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 08-au-cafe | Léa=f; Tom=m; Marco=m -->
 ### Dialogue 1 — Au café (*Dialogo 1 — Al bar*)
 
-🎧 [08-au-cafe.mp3](../audio/01-bonjour/08-au-cafe.mp3)
+🎧 [08-au-cafe.mp3](../../audio/french-italian/01-bonjour/08-au-cafe.mp3)
 
 - **Léa :** Salut, Tom ! Ça va ? (*Ciao, Tom! Come va?*)
 - **Tom :** Salut, Léa ! Ça va bien, et toi ? (*Ciao, Léa! Bene, e tu?*)
@@ -367,7 +367,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 09-a-l-hotel | Réceptionniste=f; M. Rossi=m -->
 ### Dialogue 2 — À l'hôtel (*Dialogo 2 — In albergo*)
 
-🎧 [09-a-l-hotel.mp3](../audio/01-bonjour/09-a-l-hotel.mp3)
+🎧 [09-a-l-hotel.mp3](../../audio/french-italian/01-bonjour/09-a-l-hotel.mp3)
 
 - **Réceptionniste :** Bonsoir, monsieur. (*Buonasera, signore.*)
 - **M. Rossi :** Bonsoir, madame. (*Buonasera, signora.*)
@@ -394,7 +394,7 @@ Pour chaque texte : (*Per ogni testo:*)
 <!-- audio:listen 10-je-me-presente -->
 ### Texte — Je me présente (*Testo — Mi presento*)
 
-🎧 [10-je-me-presente.mp3](../audio/01-bonjour/10-je-me-presente.mp3)
+🎧 [10-je-me-presente.mp3](../../audio/french-italian/01-bonjour/10-je-me-presente.mp3)
 
 Bonjour ! Je m'appelle Sophie. (*Buongiorno! Mi chiamo Sophie.*) Je suis française. (*Sono francese.*) Je suis de Marseille, mais j'habite à Rome. (*Sono di Marsiglia, ma abito a Roma.*) Mon mari s'appelle Luca. (*Mio marito si chiama Luca.*) Il est italien, il est de Florence. (*È italiano, è di Firenze.*) Nous sommes à Rome depuis deux ans. (*Siamo a Roma da due anni.*) Et vous ? Comment vous appelez-vous ? Vous êtes d'où ? (*E Lei? Come si chiama? Di dov'è?*)
 <!-- /audio -->

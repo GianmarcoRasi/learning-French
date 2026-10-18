@@ -1,4 +1,4 @@
-<!-- Generated from lessons/03-ma-famille.md by tools/make_audio.py: edit that file, not this one. -->
+<!-- Generated from lessons/french-italian/03-ma-famille.md by tools/make_audio.py: edit that file, not this one. -->
 <!-- audio:repeat 00-introduction -->
 # Leçon 3 — Ma famille
 
@@ -15,7 +15,7 @@
 - dire ce que tu aimes, et ce que tu n'aimes pas ;
 - faire une phrase négative, et poser une question.
 
-**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../03-ma-famille.md). Les mots nouveaux sont en gras.
+**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../french-italian/03-ma-famille.md). Les mots nouveaux sont en gras.
 <!-- /audio -->
 
 ---

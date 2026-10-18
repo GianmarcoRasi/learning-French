@@ -1,4 +1,4 @@
-<!-- Generated from lessons/01-bonjour.md by tools/make_audio.py: edit that file, not this one. -->
+<!-- Generated from lessons/french-italian/01-bonjour.md by tools/make_audio.py: edit that file, not this one. -->
 <!-- audio:repeat 00-introduction -->
 # Leçon 1 — Bonjour !
 
@@ -15,7 +15,7 @@
 - dire comment tu t'appelles, d'où tu viens et où tu habites ;
 - conjuguer le verbe **être**.
 
-**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../01-bonjour.md). Les mots nouveaux sont en gras.
+**Cette version est seulement en français.** Utilise-la pour réviser la leçon, après l'avoir écoutée deux ou trois fois dans la [version avec la traduction](../french-italian/01-bonjour.md). Les mots nouveaux sont en gras.
 <!-- /audio -->
 
 ---

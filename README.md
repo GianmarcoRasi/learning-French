@@ -6,13 +6,13 @@ A French course for Italian speakers, to learn to speak and write French from sc
 
 | # | Lesson | French only | Topics |
 |---|---|---|---|
-| 1 | [Bonjour !](lessons/01-bonjour.md) | [Bonjour !](lessons/french-only/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
-| 2 | [Qu'est-ce que c'est ?](lessons/02-qu-est-ce-que-c-est.md) | [Qu'est-ce que c'est ?](lessons/french-only/02-qu-est-ce-que-c-est.md) | numbers 0–20, nasal vowels, articles and gender, *c'est* and *il y a*, the verb *avoir*, age |
-| 3 | [Ma famille](lessons/03-ma-famille.md) | [Ma famille](lessons/french-only/03-ma-famille.md) | family, possessives, *-er* verbs and *aimer*, negation, questions with *est-ce que* and *si* |
+| 1 | [Bonjour !](lessons/french-italian/01-bonjour.md) | [Bonjour !](lessons/french-only/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
+| 2 | [Qu'est-ce que c'est ?](lessons/french-italian/02-qu-est-ce-que-c-est.md) | [Qu'est-ce que c'est ?](lessons/french-only/02-qu-est-ce-que-c-est.md) | numbers 0–20, nasal vowels, articles and gender, *c'est* and *il y a*, the verb *avoir*, age |
+| 3 | [Ma famille](lessons/french-italian/03-ma-famille.md) | [Ma famille](lessons/french-only/03-ma-famille.md) | family, possessives, *-er* verbs and *aimer*, negation, questions with *est-ce que* and *si* |
 
 ## How each lesson works
 
-Every lesson is a markdown file in [`lessons/`](lessons) with two parts:
+Every lesson is a markdown file in [`lessons/french-italian/`](lessons/french-italian) with two parts:
 
 1. **Apprenons (Impariamo)** — new words, concepts and rules. The voice reads every
    word or sentence in French, then in Italian, asks you to repeat, says the French
@@ -54,7 +54,7 @@ Only in the French-only version.
 
 ## Audio
 
-The tracks live in [`audio/`](audio), one folder per lesson, and in
+The tracks live in [`audio/french-italian/`](audio/french-italian), one folder per lesson, and in
 [`audio/french-only/`](audio/french-only) for the French-only version. They are generated from the
 lesson text by [`tools/make_audio.py`](tools/make_audio.py) with Microsoft's neural voices
 (through [edge-tts](https://github.com/rany2/edge-tts)), so they follow the lesson whenever it changes.
@@ -89,9 +89,9 @@ To regenerate the audio (needs Python 3, `ffmpeg` and internet access):
 ```sh
 pip install -r requirements.txt
 python tools/make_audio.py                              # all lessons
-python tools/make_audio.py lessons/01-bonjour.md        # one lesson
+python tools/make_audio.py lessons/french-italian/01-bonjour.md        # one lesson
 python tools/make_audio.py --only 08-au-cafe            # one track
-python tools/make_audio.py --dry-run lessons/01-bonjour.md   # show what would be read
+python tools/make_audio.py --dry-run lessons/french-italian/01-bonjour.md   # show what would be read
 ```
 
 The same command writes the French-only lesson files. Generated clips are cached in
