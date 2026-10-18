@@ -66,7 +66,7 @@ ITALIAN_RATE = "+0%"
 TRANSLATION_GAP = 0.25    # between a French sentence and its Italian translation
 SENTENCE_GAP = 0.5        # between one sentence (or French/Italian pair) and the next
 FULL_STOP_GAP = 0.3       # after a full stop inside a piece of text in one language
-INLINE_GAP = 0.08         # around a French word quoted in an Italian sentence
+INLINE_GAP = 0.0          # around a French word quoted in an Italian sentence
 
 REPEAT_FACTOR = 1.2       # pause = this × length of the French + REPEAT_EXTRA
 REPEAT_EXTRA = 1.0
@@ -192,7 +192,7 @@ def say(voice, text, rate=None):
         for j, sentence in enumerate(SENTENCE_END_RE.split(part.strip().lstrip(",;:. "))):
             if not spoken(sentence):
                 continue
-            if steps:
+            if steps and (j or INLINE_GAP):
                 steps.append(("gap", FULL_STOP_GAP if j else INLINE_GAP))
             steps.append(("say", v, r, sentence))
     return steps
