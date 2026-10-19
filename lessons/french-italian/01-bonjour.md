@@ -5,14 +5,14 @@
 
 **Niveau :** A1 (*Livello: A1*)
 
-**Thèmes :** les salutations, **tu** et **vous**, se présenter, les nationalités, le verbe **être**. (*Argomenti: i saluti, **tu** e **vous**, presentarsi, le nazionalità, il verbo **être**, cioè essere.*)
+**Thèmes :** les salutations, **tu** et **vous**, se présenter, les nationalités, le verbe **être**. (*Argomenti: i saluti, **tu** e **vous**, presentarsi, le nazionalità, il verbo **être**, cioè essere.*)<!-- it: Argomenti: i saluti, quando dare del tu e quando dare del voi, presentarsi, le nazionalità, il verbo essere. -->
 
 À la fin de cette leçon, tu sauras : (*Alla fine di questa lezione saprai:*)
 
 - saluer et dire au revoir, de façon formelle ou informelle ; (*salutare e congedarti, in modo formale o informale;*)
 - demander à quelqu'un comment il va, et répondre ; (*chiedere a qualcuno come sta, e rispondere;*)
 - dire comment tu t'appelles, d'où tu viens et où tu habites ; (*dire come ti chiami, di dove sei e dove abiti;*)
-- conjuguer le verbe **être**. (*coniugare il verbo **être**, essere.*)
+- conjuguer le verbe **être**. (*coniugare il verbo **être**, essere.*)<!-- it: coniugare il verbo essere. -->
 
 <!-- bilingual -->
 **Comment lire le texte :** le texte est en français, et la traduction italienne suit toujours, en italique et entre parenthèses. (*Come leggere il testo: il testo è in francese, e la traduzione italiana segue sempre, in corsivo e tra parentesi.*) Les mots nouveaux sont en gras. (*Le parole nuove sono in grassetto.*)
@@ -61,7 +61,7 @@ En français, on salue de façon différente selon le moment de la journée et s
 - **Excusez-moi.** (*Mi scusi.*)
 - **Pardon.** (*Scusi.*)
 
-En France, c'est très poli d'ajouter **madame** ou **monsieur** après la salutation, sans le nom de famille. (*In Francia è molto educato aggiungere **madame**, signora, o **monsieur**, signore, dopo il saluto, senza il cognome.*)
+En France, c'est très poli d'ajouter **madame** ou **monsieur** après la salutation, sans le nom de famille. (*In Francia è molto educato aggiungere **madame**, signora, o **monsieur**, signore, dopo il saluto, senza il cognome.*)<!-- it: In Francia è molto educato aggiungere signora o signore dopo il saluto, senza il cognome. -->
 
 #### Phrases en contexte (*Frasi in contesto*)
 
@@ -90,18 +90,18 @@ Attention : en général, les consonnes finales `c`, `r`, `f` et `l` se prononce
 - **bonjour** (*buongiorno*)
 - **bonsoir** (*buonasera*)
 
-Le groupe `ou` se prononce comme dans **vous** et **bonjour**. (*Il gruppo `ou` si pronuncia come la u italiana.*)
+Le groupe `ou` se prononce comme dans **vous** et **bonjour**. (*Il gruppo `ou` si pronuncia come la u italiana.*)<!-- it: Le lettere o e u insieme si pronunciano come la u italiana. -->
 
 - **vous** (*voi*)
 - **bonjour** (*buongiorno*)
 
-Le groupe `oi` se prononce « oua ». (*Il gruppo `oi` si pronuncia "ua".*)
+Le groupe `oi` se prononce « oua ». (*Il gruppo `oi` si pronuncia "ua".*)<!-- it: Le lettere o e i insieme si pronunciano "ua". -->
 
 - **bonsoir** (*buonasera*)
 - **au revoir** (*arrivederci*)
 - **toi** (*tu, te*)
 
-Les groupes `au` et `eau` se prononcent « o ». (*I gruppi `au` e `eau` si pronunciano "o".*)
+Les groupes `au` et `eau` se prononcent « o ». (*I gruppi `au` e `eau` si pronunciano "o".*)<!-- it: Le lettere a e u insieme, ed e, a e u insieme, si pronunciano "o". -->
 
 - **au revoir** (*arrivederci*)
 - **beaucoup** (*molto*)
@@ -118,7 +118,7 @@ Le `u` français est un son qui n'existe pas en italien. (*La `u` francese è un
 
 🎧 [03-tu-ou-vous.mp3](../../audio/french-italian/01-bonjour/03-tu-ou-vous.mp3)
 
-Avec les amis, la famille et les enfants, on utilise **tu**. (*Con gli amici, la famiglia e i bambini si usa **tu**.*) Avec les personnes que tu ne connais pas, au travail, ou avec les personnes plus âgées, on utilise **vous**. (*Con le persone che non conosci, al lavoro, o con le persone più anziane, si usa **vous**.*) Attention : en français, la forme de politesse n'est pas la troisième personne, comme en italien. C'est **vous**. (*Attenzione: in francese la forma di cortesia non è la terza persona, come il nostro Lei, ma **vous**, come il vecchio voi italiano.*) **Vous** est aussi le pluriel de **tu**, quand tu parles à plusieurs personnes. (***Vous** è anche il plurale di **tu**, quando parli a più persone.*)
+Avec les amis, la famille et les enfants, on utilise **tu**. (*Con gli amici, la famiglia e i bambini si usa **tu**.*)<!-- it: Con gli amici, la famiglia e i bambini si dà del tu. --> Avec les personnes que tu ne connais pas, au travail, ou avec les personnes plus âgées, on utilise **vous**. (*Con le persone che non conosci, al lavoro, o con le persone più anziane, si usa **vous**.*)<!-- it: Con le persone che non conosci, al lavoro, o con le persone più anziane, si dà del voi. --> Attention : en français, la forme de politesse n'est pas la troisième personne, comme en italien. C'est **vous**. (*Attenzione: in francese la forma di cortesia non è la terza persona, come il nostro Lei, ma **vous**, come il vecchio voi italiano.*)<!-- it: Attenzione: in francese la forma di cortesia non è la terza persona, come il nostro Lei, ma la seconda persona plurale, come il vecchio voi italiano. --> **Vous** est aussi le pluriel de **tu**, quand tu parles à plusieurs personnes. (***Vous** è anche il plurale di **tu**, quando parli a più persone.*)<!-- it: La stessa forma è anche il plurale del tu, quando parli a più persone. -->
 
 - **Comment ça va ?** (*Come va?*)
 - **Ça va ?** (*Tutto bene?*)
@@ -155,9 +155,9 @@ Avec les amis, la famille et les enfants, on utilise **tu**. (*Con gli amici, la
 - **Je suis de Milan.** (*Sono di Milano.*)
 - **J'habite à Paris.** (*Abito a Parigi.*)
 
-Les nationalités s'écrivent avec une minuscule, comme en italien. (*Le nazionalità si scrivono con la lettera minuscola, come in italiano.*) Pour le féminin, en général, on ajoute un `e` : **français** devient **française**, et maintenant on entend le `s`. (*Per il femminile di solito si aggiunge una `e`: **français** diventa **française**, e ora la `s` si sente.*) Les mots en `ien` doublent le `n` : **italien** devient **italienne**. (*Le parole in `ien` raddoppiano la `n`: **italien** diventa **italienne**.*)
+Les nationalités s'écrivent avec une minuscule, comme en italien. (*Le nazionalità si scrivono con la lettera minuscola, come in italiano.*) Pour le féminin, en général, on ajoute un `e` : **français** devient **française**, et maintenant on entend le `s`. (*Per il femminile di solito si aggiunge una `e`: **français** diventa **française**, e ora la `s` si sente.*)<!-- it: Per il femminile di solito si aggiunge una e: francese, al femminile, prende una e finale, e ora la s si sente. --> Les mots en `ien` doublent le `n` : **italien** devient **italienne**. (*Le parole in `ien` raddoppiano la `n`: **italien** diventa **italienne**.*)<!-- it: Le parole che finiscono in i, e, n raddoppiano la n: italiano, al femminile, si scrive con due n. -->
 
-Devant une voyelle ou un `h` muet, **je** devient **j'** : on dit **j'habite**, et pas « je habite ». (*Davanti a una vocale o a una `h` muta, **je** diventa **j'**: si dice **j'habite**, e non **je habite**.*) C'est la même chose pour **me** et **te** : **je m'appelle**, **tu t'appelles**. (*Succede lo stesso con **me** e **te**: **je m'appelle**, **tu t'appelles**.*)
+Devant une voyelle ou un `h` muet, **je** devient **j'** : on dit **j'habite**, et pas « je habite ». (*Davanti a una vocale o a una `h` muta, **je** diventa **j'**: si dice **j'habite**, e non **je habite**.*)<!-- it: Davanti a una vocale o a una h muta, il pronome io perde la e e prende l'apostrofo, come in io abito. --> C'est la même chose pour **me** et **te** : **je m'appelle**, **tu t'appelles**. (*Succede lo stesso con **me** e **te**: **je m'appelle**, **tu t'appelles**.*)<!-- it: Succede lo stesso con mi e ti, come in mi chiamo e ti chiami. -->
 <!-- /audio -->
 
 <!-- audio:repeat 05-etre -->
@@ -165,7 +165,7 @@ Devant une voyelle ou un `h` muet, **je** devient **j'** : on dit **j'habite**, 
 
 🎧 [05-etre.mp3](../../audio/french-italian/01-bonjour/05-etre.mp3)
 
-Une différence importante avec l'italien : en français, le pronom sujet est obligatoire. (*Una differenza importante con l'italiano: in francese il pronome soggetto è obbligatorio.*) On dit toujours **je suis**, jamais **suis** tout seul. (*Si dice sempre **je suis**, mai **suis** da solo, come il nostro "sono".*) Pourquoi ? Parce que beaucoup de formes du verbe se prononcent de la même façon. (*Perché? Perché molte forme del verbo si pronunciano allo stesso modo.*)
+Une différence importante avec l'italien : en français, le pronom sujet est obligatoire. (*Una differenza importante con l'italiano: in francese il pronome soggetto è obbligatorio.*) On dit toujours **je suis**, jamais **suis** tout seul. (*Si dice sempre **je suis**, mai **suis** da solo, come il nostro "sono".*)<!-- it: Si dice sempre io sono, con il pronome, e mai sono da solo, come facciamo noi in italiano. --> Pourquoi ? Parce que beaucoup de formes du verbe se prononcent de la même façon. (*Perché? Perché molte forme del verbo si pronunciano allo stesso modo.*)
 
 - **je suis** (*io sono*)
 - **tu es** (*tu sei*)
@@ -176,7 +176,7 @@ Une différence importante avec l'italien : en français, le pronom sujet est ob
 - **ils sont** (*loro sono*) — Pour un groupe d'hommes, ou un groupe mixte. (*Per un gruppo di uomini, o misto.*)
 - **elles sont** (*loro sono*) — Seulement pour un groupe de femmes. (*Solo per un gruppo di donne.*)
 
-Écoute bien : **tu es** et **il est** se prononcent de la même façon. (*Ascolta bene: **tu es** e **il est** si pronunciano allo stesso modo.*) Dans **vous êtes**, le `s` de **vous** se lie à la voyelle suivante, et on entend un « z » : c'est la liaison. (*In **vous êtes** la `s` di **vous** si lega alla vocale che segue, e si sente una "z": è la liaison.*)
+Écoute bien : **tu es** et **il est** se prononcent de la même façon. (*Ascolta bene: **tu es** e **il est** si pronunciano allo stesso modo.*)<!-- it: Ascolta bene: tu sei e lui è si pronunciano allo stesso modo. --> Dans **vous êtes**, le `s` de **vous** se lie à la voyelle suivante, et on entend un « z » : c'est la liaison. (*In **vous êtes** la `s` di **vous** si lega alla vocale che segue, e si sente una "z": è la liaison.*)<!-- it: In voi siete, la s finale del pronome si lega alla vocale che segue, e si sente una "z": si chiama legamento. -->
 
 Pour poser une question, il suffit de monter la voix à la fin de la phrase, comme en italien. (*Per fare una domanda basta alzare il tono della voce alla fine della frase, come in italiano.*)
 
@@ -239,9 +239,9 @@ Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses s
 7. Anna et Sophie ___ à Paris.
 8. Il ___ de Turin.
 
-### Exercice 3 — Tu ou vous ? (*Esercizio 3 — **Tu** o **vous**?*)
+### Exercice 3 — Tu ou vous ? (*Esercizio 3 — **Tu** o **vous**?*)<!-- it: Esercizio 3 — Dare del tu o del voi? -->
 
-Pour chaque situation, écris si tu utilises **tu** ou **vous**. Puis écris comment tu demandes son nom à la personne. (*Per ogni situazione scrivi se usi **tu** o **vous**. Poi scrivi come chiedi alla persona come si chiama.*)
+Pour chaque situation, écris si tu utilises **tu** ou **vous**. Puis écris comment tu demandes son nom à la personne. (*Per ogni situazione scrivi se usi **tu** o **vous**. Poi scrivi come chiedi alla persona come si chiama.*)<!-- it: Per ogni situazione scrivi se dai del tu o del voi. Poi scrivi come chiedi alla persona come si chiama. -->
 
 1. Un garçon de ton âge, à une fête. (*Un ragazzo della tua età, a una festa.*)
 2. Une dame âgée, à la gare. (*Una signora anziana, alla stazione.*)
@@ -251,7 +251,7 @@ Pour chaque situation, écris si tu utilises **tu** ou **vous**. Puis écris com
 
 ### Exercice 4 — Masculin et féminin (*Esercizio 4 — Maschile e femminile*)
 
-Écris le féminin. (*Scrivi il femminile.*) La règle : on ajoute un `e`, et les mots en `ien` deviennent `ienne`. (*La regola: si aggiunge una `e`, e le parole in `ien` diventano `ienne`.*)
+Écris le féminin. (*Scrivi il femminile.*) La règle : on ajoute un `e`, et les mots en `ien` deviennent `ienne`. (*La regola: si aggiunge una `e`, e le parole in `ien` diventano `ienne`.*)<!-- it: La regola: si aggiunge una e, e le parole che finiscono in i, e, n raddoppiano la n. -->
 
 1. italien → ___
 2. français → ___
@@ -388,7 +388,7 @@ Pour chaque texte : (*Per ogni testo:*)
 2. Monsieur Rossi est italien. (*Il signor Rossi è italiano.*)
 3. Monsieur Rossi est de Rome. (*Il signor Rossi è di Roma.*)
 4. L'hôtel est à Lyon. (*L'albergo è a Lione.*)
-5. La réceptionniste et monsieur Rossi utilisent **vous**. (*La receptionist e il signor Rossi usano **vous**.*)
+5. La réceptionniste et monsieur Rossi utilisent **vous**. (*La receptionist e il signor Rossi usano **vous**.*)<!-- it: La receptionist e il signor Rossi si danno del voi. -->
 <!-- /audio -->
 
 <!-- audio:listen 10-je-me-presente -->
