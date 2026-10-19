@@ -12,8 +12,14 @@ Each lesson marks the parts to be read aloud with HTML comments:
     <!-- /audio -->
 
 Inside a block, text is French and *(italic in parentheses)* is its Italian
-translation, read by the Italian voice; the French words quoted in it, in
-**bold** or `code`, are read by the French voice.
+translation, read by the Italian voice. The Italian voice never says French:
+when a translation quotes French words (in **bold**, or a group of letters in
+`code`), it is followed by what to say instead, in a comment:
+
+    (*Con gli amici si usa **tu**.*)<!-- it: Con gli amici si dà del tu. -->
+
+The script stops if one is missing. Single letters in `code` are fine: the
+Italian voice says the letter.
 
 - `repeat` blocks are read in order. A list item of the form
   `**French** (*Italiano*) notes` is a drill: French, Italian, notes,
@@ -66,7 +72,6 @@ ITALIAN_RATE = "+0%"
 TRANSLATION_GAP = 0.25    # between a French sentence and its Italian translation
 SENTENCE_GAP = 0.5        # between one sentence (or French/Italian pair) and the next
 FULL_STOP_GAP = 0.3       # after a full stop inside a piece of text in one language
-INLINE_GAP = 0.0          # around a French word quoted in an Italian sentence
 
 REPEAT_FACTOR = 1.2       # pause = this × length of the French + REPEAT_EXTRA
 REPEAT_EXTRA = 1.0
@@ -87,12 +92,13 @@ BLOCK_RE = re.compile(
     r"(?P<body>.*?)<!--\s*/audio\s*-->",
     re.S,
 )
-DRILL_RE = re.compile(r"^\*\*(?P<fr>[^*]+?)\*\*\s*\(\*(?P<it>.+?)\*\)(?P<rest>.*)$")
+SAY_RE = r"(?:\s*<!--\s*it:\s*(?P<say>.*?)\s*-->)?"
+DRILL_RE = re.compile(r"^\*\*(?P<fr>[^*]+?)\*\*\s*\(\*(?P<it>.+?)\*\)" + SAY_RE + r"(?P<rest>.*)$")
 SPEAKER_RE = re.compile(r"^\*\*(?P<speaker>[^*]+?)\s*:\s*\*\*\s*(?P<line>.*)$")
-TRANSLATION_RE = re.compile(r"\(\*(.+?)\*\)")
-QUOTE_RE = re.compile(r"\*\*([^*]+?)\*\*|`([^`]+)`")
+TRANSLATION_RE = re.compile(r"\(\*(?P<it>.+?)\*\)" + SAY_RE)
+FRENCH_QUOTE_RE = re.compile(r"\*\*[^*]+?\*\*|`[^`]+`")
 SENTENCE_END_RE = re.compile(r"(?<=[.!?])\s+")
-QUOTE_START, QUOTE_END = "\x01", "\x02"   # mark the French quoted in a translation
+COMMENT_RE = re.compile(r"<!--.*?-->")
 BILINGUAL_RE = re.compile(r"<!--\s*bilingual\s*-->\n?(.*?)<!--\s*/bilingual\s*-->\n?", re.S)
 FRENCH_ONLY_RE = re.compile(r"<!--\s*french-only\s*\n(.*?)-->\n?", re.S)
 LINK_RE = re.compile(r"\[([^\]]*)\]\([^)]*\)")
@@ -103,7 +109,7 @@ SYMBOL_RE = re.compile("[\U0001F000-\U0001FFFF←-⇿☀-➿️]")
 
 def clean(text):
     text = LINK_RE.sub(r"\1", text)
-    text = QUOTE_RE.sub(lambda m: QUOTE_START + (m[1] or m[2]) + QUOTE_END, text)
+    text = COMMENT_RE.sub("", text)
     text = SYMBOL_RE.sub("", text)
     text = re.sub(r"_{2,}", "…", text)            # blanks in the exercises
     text = re.sub(r"[*`#]", "", text)
@@ -116,11 +122,21 @@ def spoken(text):
     return any(c.isalnum() for c in text)
 
 
+def italian(m):
+    """What the Italian voice says for a (*translation*) matched by m."""
+    if m["say"]:
+        return m["say"]
+    # Bold is French; so is a group of letters in code, but not a single letter.
+    if any(q.startswith("**") or len(q) > 3 for q in FRENCH_QUOTE_RE.findall(m["it"])):
+        raise ValueError(f"French words in an Italian translation, add <!-- it: ... --> after it: {m['it']}")
+    return m["it"]
+
+
 def split_languages(text):
     """French text with (*Italian*) translations, each said in one voice."""
     out, pos = [], 0
     for m in TRANSLATION_RE.finditer(text):
-        out += [("fr", text[pos:m.start()]), ("it", m[1])]
+        out += [("fr", text[pos:m.start()]), ("it", italian(m))]
         pos = m.end()
     out.append(("fr", text[pos:]))
     return out
@@ -178,23 +194,17 @@ def say(voice, text, rate=None):
     """Steps to say a piece of text, one sentence at a time.
 
     The voices pause for a long time at a full stop, so each sentence is said
-    on its own and followed by a shorter gap. In Italian, the quoted French
-    words are said by the French voice.
+    on its own and followed by a shorter gap.
     """
+    if rate is None:
+        rate = ITALIAN_RATE if voice == NARRATOR else FRENCH_RATE
     steps = []
-    parts = re.split(f"{QUOTE_START}|{QUOTE_END}", text)
-    if voice != NARRATOR:
-        parts = ["".join(parts)]
-    for i, part in enumerate(parts):
-        quoted = i % 2 == 1   # French quoted in the Italian
-        v = FRENCH if quoted else voice
-        r = rate or (ITALIAN_RATE if v == NARRATOR else FRENCH_RATE)
-        for j, sentence in enumerate(SENTENCE_END_RE.split(part.strip().lstrip(",;:. "))):
-            if not spoken(sentence):
-                continue
-            if steps and (j or INLINE_GAP):
-                steps.append(("gap", FULL_STOP_GAP if j else INLINE_GAP))
-            steps.append(("say", v, r, sentence))
+    for sentence in SENTENCE_END_RE.split(text):
+        if not spoken(sentence):
+            continue
+        if steps:
+            steps.append(("gap", FULL_STOP_GAP))
+        steps.append(("say", voice, rate, sentence))
     return steps
 
 
@@ -223,7 +233,7 @@ def repeat_script(body, french_only=False):
         if not in_drill:
             steps += read(french(DRILL_START) if french_only else DRILL_START) + [("pause", 0.3)]
             in_drill = True
-        fr, it = clean(m["fr"]), clean(m["it"])
+        fr, it = clean(m["fr"]), clean(italian(m))
         if french_only:
             steps += say(FRENCH, fr) + [("pause", SENTENCE_GAP)]
         else:
@@ -295,7 +305,7 @@ def french_only_markdown(text, name):
     """The French-only version of a lesson, as markdown."""
     lines = []
     for line in version(text, french_only=True).splitlines():
-        stripped = re.sub(r"\s*\(\*.+?\*\)|\s*\(<i>.+?</i>\)", "", line).rstrip()
+        stripped = re.sub(r"\s*\(\*.+?\*\)(\s*<!--\s*it:.*?-->)?|\s*\(<i>.+?</i>\)", "", line).rstrip()
         # Keep the lines that are only a translation: exercise items.
         if re.sub(r"^\s*([-*+]|\d+\.)?\s*", "", stripped):
             line = stripped

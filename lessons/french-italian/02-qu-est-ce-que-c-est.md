@@ -5,14 +5,14 @@
 
 **Niveau :** A1 (*Livello: A1*)
 
-**Thèmes :** les nombres de 0 à 20, les voyelles nasales, les articles, **c'est** et **il y a**, le verbe **avoir**, l'âge. (*Argomenti: i numeri da 0 a 20, le vocali nasali, gli articoli, **c'est** e **il y a**, il verbo **avoir**, cioè avere, l'età.*)
+**Thèmes :** les nombres de 0 à 20, les voyelles nasales, les articles, **c'est** et **il y a**, le verbe **avoir**, l'âge. (*Argomenti: i numeri da 0 a 20, le vocali nasali, gli articoli, **c'est** e **il y a**, il verbo **avoir**, cioè avere, l'età.*)<!-- it: Argomenti: i numeri da 0 a 20, le vocali nasali, gli articoli, come dire è e c'è, il verbo avere, l'età. -->
 
 À la fin de cette leçon, tu sauras : (*Alla fine di questa lezione saprai:*)
 
 - compter de 0 à 20, et dire un prix ; (*contare da 0 a 20, e dire un prezzo;*)
 - dire ce qu'est un objet, et ce qu'il y a dans un lieu ; (*dire che cos'è un oggetto, e che cosa c'è in un posto;*)
 - utiliser les articles, et reconnaître le genre des mots ; (*usare gli articoli, e riconoscere il genere delle parole;*)
-- conjuguer le verbe **avoir**, et dire ton âge. (*coniugare il verbo **avoir**, avere, e dire quanti anni hai.*)
+- conjuguer le verbe **avoir**, et dire ton âge. (*coniugare il verbo **avoir**, avere, e dire quanti anni hai.*)<!-- it: coniugare il verbo avere, e dire quanti anni hai. -->
 
 <!-- bilingual -->
 **Comment lire le texte :** le texte est en français, et la traduction italienne suit toujours, en italique et entre parenthèses. (*Come leggere il testo: il testo è in francese, e la traduzione italiana segue sempre, in corsivo e tra parentesi.*) Les mots nouveaux sont en gras. (*Le parole nuove sono in grassetto.*)
@@ -59,7 +59,7 @@ Pour réviser, il existe aussi une [version seulement en français](../french-on
 - **dix-neuf** (*diciannove*)
 - **vingt** (*venti*) — Le `g` et le `t` sont muets. (*La `g` e la `t` sono mute.*)
 
-Quand **six** et **dix** sont seuls, le `x` final se prononce comme un `s`. (*Quando **six** e **dix** sono da soli, la `x` finale si pronuncia come una `s`.*) Devant un mot qui commence par une voyelle, le `s` ou le `x` final se lie au mot suivant, et on entend un « z » : **deux euros**. (*Davanti a una parola che comincia per vocale, la `s` o la `x` finale si lega alla parola seguente e si sente una "z": **deux euros**, due euro.*)
+Quand **six** et **dix** sont seuls, le `x` final se prononce comme un `s`. (*Quando **six** e **dix** sono da soli, la `x` finale si pronuncia come una `s`.*)<!-- it: Quando sei e dieci sono da soli, la x finale si pronuncia come una s. --> Devant un mot qui commence par une voyelle, le `s` ou le `x` final se lie au mot suivant, et on entend un « z » : **deux euros**. (*Davanti a una parola che comincia per vocale, la `s` o la `x` finale si lega alla parola seguente e si sente una "z": **deux euros**, due euro.*)<!-- it: Davanti a una parola che comincia per vocale, la s o la x finale si lega alla parola seguente e si sente una "z", come in due euro. -->
 
 #### Phrases en contexte (*Frasi in contesto*)
 
@@ -78,19 +78,19 @@ Quand **six** et **dix** sont seuls, le `x` final se prononce comme un `s`. (*Qu
 
 Le français a des voyelles que l'italien n'a pas : les voyelles nasales. (*Il francese ha delle vocali che l'italiano non ha: le vocali nasali.*) L'air passe aussi par le nez, et on ne prononce pas le `n` ou le `m` qui suit la voyelle. (*L'aria passa anche dal naso, e la `n` o la `m` che segue la vocale non si pronuncia.*)
 
-Le son `an`, qui s'écrit aussi `en` : (*Il suono `an`, che si scrive anche `en`:*)
+Le son `an`, qui s'écrit aussi `en` : (*Il suono `an`, che si scrive anche `en`:*)<!-- it: Il suono che si scrive a, n, e anche e, n: -->
 
 - **France** (*Francia*)
 - **enfant** (*bambino*)
 - **enchanté** (*piacere*)
 
-Le son `on` : (*Il suono `on`:*)
+Le son `on` : (*Il suono `on`:*)<!-- it: Il suono che si scrive o, n: -->
 
 - **bonjour** (*buongiorno*)
 - **non** (*no*)
 - **onze** (*undici*)
 
-Le son `in`, qui s'écrit aussi `un` et `ain` : (*Il suono `in`, che si scrive anche `un` e `ain`:*)
+Le son `in`, qui s'écrit aussi `un` et `ain` : (*Il suono `in`, che si scrive anche `un` e `ain`:*)<!-- it: Il suono che si scrive i, n, e anche u, n, e a, i, n: -->
 
 - **vin** (*vino*)
 - **cinq** (*cinque*)
@@ -113,9 +113,9 @@ Attention : s'il y a une voyelle ou un deuxième `n` après le `n`, la voyelle n
 
 🎧 [03-articles.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/03-articles.mp3)
 
-Comme en italien, il y a deux genres en français : le masculin et le féminin. (*Come in italiano, in francese ci sono due generi: il maschile e il femminile.*) Mais attention : le genre n'est pas toujours le même qu'en italien. (*Ma attenzione: il genere non è sempre lo stesso dell'italiano.*) Par exemple, **la table**, **la mer** et **la fleur** sont féminins, et **le sac** est masculin. (*Per esempio **la table**, il tavolo, **la mer**, il mare, e **la fleur**, il fiore, sono femminili, e **le sac**, la borsa, è maschile.*) Apprends toujours un mot nouveau avec son article. (*Impara sempre una parola nuova insieme al suo articolo.*)
+Comme en italien, il y a deux genres en français : le masculin et le féminin. (*Come in italiano, in francese ci sono due generi: il maschile e il femminile.*) Mais attention : le genre n'est pas toujours le même qu'en italien. (*Ma attenzione: il genere non è sempre lo stesso dell'italiano.*) Par exemple, **la table**, **la mer** et **la fleur** sont féminins, et **le sac** est masculin. (*Per esempio **la table**, il tavolo, **la mer**, il mare, e **la fleur**, il fiore, sono femminili, e **le sac**, la borsa, è maschile.*)<!-- it: Per esempio, in francese il tavolo, il mare e il fiore sono femminili, e la borsa è maschile. --> Apprends toujours un mot nouveau avec son article. (*Impara sempre una parola nuova insieme al suo articolo.*)
 
-Les articles indéfinis sont **un** pour le masculin, **une** pour le féminin, et **des** pour le pluriel. (*Gli articoli indeterminativi sono **un** per il maschile, **une** per il femminile, e **des** per il plurale.*)
+Les articles indéfinis sont **un** pour le masculin, **une** pour le féminin, et **des** pour le pluriel. (*Gli articoli indeterminativi sono **un** per il maschile, **une** per il femminile, e **des** per il plurale.*)<!-- it: Gli articoli indeterminativi sono tre: uno per il maschile, uno per il femminile e uno per il plurale. -->
 
 - **un livre** (*un libro*)
 - **une table** (*un tavolo*) — En français, c'est féminin ! (*In francese è femminile!*)
@@ -126,9 +126,9 @@ Les articles indéfinis sont **un** pour le masculin, **une** pour le féminin, 
 - **des livres** (*dei libri*)
 - **des chaises** (*delle sedie*)
 
-En italien, on peut dire « libri », sans article. (*In italiano si può dire "libri", senza articolo.*) En français, on ne peut pas enlever **des** : on dit toujours **des livres**. (*In francese **des** non si può togliere: si dice sempre **des livres**.*)
+En italien, on peut dire « libri », sans article. (*In italiano si può dire "libri", senza articolo.*) En français, on ne peut pas enlever **des** : on dit toujours **des livres**. (*In francese **des** non si può togliere: si dice sempre **des livres**.*)<!-- it: In francese l'articolo plurale non si può togliere: si dice sempre dei libri, e mai libri da solo. -->
 
-Les articles définis sont **le** pour le masculin, et **la** pour le féminin. (*Gli articoli determinativi sono **le** per il maschile, e **la** per il femminile.*) Devant une voyelle ou un `h` muet, ils deviennent **l'**. (*Davanti a una vocale o a una `h` muta diventano **l'**.*) Au pluriel, il y a un seul article pour tous les mots : **les**. (*Al plurale c'è un solo articolo per tutte le parole: **les**.*)
+Les articles définis sont **le** pour le masculin, et **la** pour le féminin. (*Gli articoli determinativi sono **le** per il maschile, e **la** per il femminile.*)<!-- it: Gli articoli determinativi sono due: uno per il maschile e uno per il femminile. --> Devant une voyelle ou un `h` muet, ils deviennent **l'**. (*Davanti a una vocale o a una `h` muta diventano **l'**.*)<!-- it: Davanti a una vocale o a una h muta perdono la vocale e prendono l'apostrofo. --> Au pluriel, il y a un seul article pour tous les mots : **les**. (*Al plurale c'è un solo articolo per tutte le parole: **les**.*)<!-- it: Al plurale c'è un solo articolo per tutte le parole. -->
 
 - **le livre** (*il libro*)
 - **la table** (*il tavolo*)
@@ -138,7 +138,7 @@ Les articles définis sont **le** pour le masculin, et **la** pour le féminin. 
 - **les tables** (*i tavoli*)
 - **les amis** (*gli amici*)
 
-Pour faire le pluriel, en général, on ajoute un `s`, mais il est muet : **livre** et **livres** se prononcent de la même façon. (*Per fare il plurale di solito si aggiunge una `s`, ma è muta: **livre** e **livres** si pronunciano allo stesso modo.*) Quand tu écoutes, c'est donc l'article qui te dit si le mot est au singulier ou au pluriel. (*Quando ascolti, quindi, è l'articolo che ti dice se la parola è singolare o plurale.*) Dans **les amis**, le `s` de **les** se lie à la voyelle, et on entend un « z ». (*In **les amis** la `s` di **les** si lega alla vocale, e si sente una "z".*)
+Pour faire le pluriel, en général, on ajoute un `s`, mais il est muet : **livre** et **livres** se prononcent de la même façon. (*Per fare il plurale di solito si aggiunge una `s`, ma è muta: **livre** e **livres** si pronunciano allo stesso modo.*)<!-- it: Per fare il plurale di solito si aggiunge una s, ma è muta: libro e libri si pronunciano allo stesso modo. --> Quand tu écoutes, c'est donc l'article qui te dit si le mot est au singulier ou au pluriel. (*Quando ascolti, quindi, è l'articolo che ti dice se la parola è singolare o plurale.*) Dans **les amis**, le `s` de **les** se lie à la voyelle, et on entend un « z ». (*In **les amis** la `s` di **les** si lega alla vocale, e si sente una "z".*)<!-- it: In gli amici, la s dell'articolo si lega alla vocale, e si sente una "z". -->
 <!-- /audio -->
 
 <!-- audio:repeat 04-c-est-il-y-a -->
@@ -146,7 +146,7 @@ Pour faire le pluriel, en général, on ajoute un `s`, mais il est muet : **livr
 
 🎧 [04-c-est-il-y-a.mp3](../../audio/french-italian/02-qu-est-ce-que-c-est/04-c-est-il-y-a.mp3)
 
-Pour demander ce qu'est une chose, on dit **Qu'est-ce que c'est ?** (*Per chiedere che cos'è una cosa si dice **Qu'est-ce que c'est ?**, che cos'è?*) Pour répondre, on utilise **c'est** au singulier, et **ce sont** au pluriel. (*Per rispondere si usa **c'est**, è, al singolare, e **ce sont**, sono, al plurale.*)
+Pour demander ce qu'est une chose, on dit **Qu'est-ce que c'est ?** (*Per chiedere che cos'è una cosa si dice **Qu'est-ce que c'est ?**, che cos'è?*)<!-- it: Per chiedere che cos'è una cosa si usa la domanda che hai appena sentito. --> Pour répondre, on utilise **c'est** au singulier, et **ce sont** au pluriel. (*Per rispondere si usa **c'est**, è, al singolare, e **ce sont**, sono, al plurale.*)<!-- it: Per rispondere si usa è al singolare, e sono al plurale. -->
 
 - **Qu'est-ce que c'est ?** (*Che cos'è?*)
 - **C'est un livre.** (*È un libro.*)
@@ -154,7 +154,7 @@ Pour demander ce qu'est une chose, on dit **Qu'est-ce que c'est ?** (*Per chiede
 - **Ce sont des clés.** (*Sono delle chiavi.*)
 - **C'est le livre de Paul.** (*È il libro di Paul.*)
 
-Pour dire qu'une chose se trouve dans un lieu, on utilise **il y a**. (*Per dire che una cosa si trova in un posto si usa **il y a**.*) **Il y a** ne change jamais : c'est la même forme au singulier et au pluriel. (***Il y a** non cambia mai: vuol dire sia "c'è" sia "ci sono".*)
+Pour dire qu'une chose se trouve dans un lieu, on utilise **il y a**. (*Per dire che una cosa si trova in un posto si usa **il y a**.*)<!-- it: Per dire che una cosa si trova in un posto si usa l'espressione che hai appena sentito. --> **Il y a** ne change jamais : c'est la même forme au singulier et au pluriel. (***Il y a** non cambia mai: vuol dire sia "c'è" sia "ci sono".*)<!-- it: Questa espressione non cambia mai: vuol dire sia "c'è" sia "ci sono". -->
 
 - **Il y a un livre.** (*C'è un libro.*)
 - **Il y a des chaises.** (*Ci sono delle sedie.*)
@@ -184,12 +184,12 @@ Pour dire qu'une chose se trouve dans un lieu, on utilise **il y a**. (*Per dire
 - **ils ont** (*loro hanno*)
 - **elles ont** (*loro hanno*)
 
-Écoute bien la différence entre **ils ont**, où on entend un « z », et **ils sont**, où on entend un « s ». (*Ascolta bene la differenza tra **ils ont**, loro hanno, dove si sente una "z", e **ils sont**, loro sono, dove si sente una "s".*) La différence est petite, mais elle change le sens de la phrase. (*La differenza è piccola, ma cambia il significato della frase.*)
+Écoute bien la différence entre **ils ont**, où on entend un « z », et **ils sont**, où on entend un « s ». (*Ascolta bene la differenza tra **ils ont**, loro hanno, dove si sente una "z", e **ils sont**, loro sono, dove si sente una "s".*)<!-- it: Ascolta bene la differenza tra loro hanno, dove si sente una "z", e loro sono, dove si sente una "s". --> La différence est petite, mais elle change le sens de la phrase. (*La differenza è piccola, ma cambia il significato della frase.*)
 
 - **ils ont** (*loro hanno*)
 - **ils sont** (*loro sono*)
 
-Pour dire l'âge, le français utilise le verbe **avoir**, comme l'italien. (*Per dire l'età il francese usa il verbo **avoir**, come l'italiano.*) Le mot **ans** est obligatoire : on dit **j'ai vingt ans**, et jamais **j'ai vingt** tout seul. (*La parola **ans**, anni, è obbligatoria: si dice **j'ai vingt ans**, e mai solo **j'ai vingt**.*)
+Pour dire l'âge, le français utilise le verbe **avoir**, comme l'italien. (*Per dire l'età il francese usa il verbo **avoir**, come l'italiano.*)<!-- it: Per dire l'età il francese usa il verbo avere, come l'italiano. --> Le mot **ans** est obligatoire : on dit **j'ai vingt ans**, et jamais **j'ai vingt** tout seul. (*La parola **ans**, anni, è obbligatoria: si dice **j'ai vingt ans**, e mai solo **j'ai vingt**.*)<!-- it: La parola anni è obbligatoria: si dice ho vent'anni, e mai solo ho venti. -->
 
 - **Tu as quel âge ?** (*Quanti anni hai?*)
 - **Quel âge avez-vous ?** (*Quanti anni ha?*) — Formel. (*Formale.*)
@@ -261,7 +261,7 @@ Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses s
 
 ### Exercice 2 — Les articles (*Esercizio 2 — Gli articoli*)
 
-**a)** Écris **un**, **une** ou **des**. (*Scrivi **un**, **une** o **des**.*)
+**a)** Écris **un**, **une** ou **des**. (*Scrivi **un**, **une** o **des**.*)<!-- it: Scrivi l'articolo indeterminativo giusto. -->
 
 1. ___ livre
 2. ___ table
@@ -270,7 +270,7 @@ Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses s
 5. ___ téléphone
 6. ___ chaise
 
-**b)** Écris **le**, **la**, **l'** ou **les**. (*Scrivi **le**, **la**, **l'** o **les**.*)
+**b)** Écris **le**, **la**, **l'** ou **les**. (*Scrivi **le**, **la**, **l'** o **les**.*)<!-- it: Scrivi l'articolo determinativo giusto. -->
 
 1. ___ livre
 2. ___ table
@@ -313,7 +313,7 @@ Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses s
 
 **a)** Présente-toi en cinq ou six phrases : comment tu t'appelles, quel âge tu as, d'où tu viens, si tu as des frères et sœurs, et quel âge ils ont. (*Presentati in cinque o sei frasi: come ti chiami, quanti anni hai, di dove sei, se hai fratelli o sorelle, e quanti anni hanno.*)
 
-**b)** Décris ton sac ou ta table en quatre ou cinq phrases : qu'est-ce qu'il y a ? (*Descrivi la tua borsa o il tuo tavolo in quattro o cinque frasi: che cosa c'è?*) Utilise **il y a**, **sur**, **sous** et **dans**. (*Usa **il y a**, **sur**, **sous** e **dans**.*) Si tu ne connais pas le nom d'un objet, cherche-le dans le dictionnaire, et écris-le avec son article. (*Se non conosci il nome di un oggetto, cercalo nel dizionario, e scrivilo con il suo articolo.*)
+**b)** Décris ton sac ou ta table en quatre ou cinq phrases : qu'est-ce qu'il y a ? (*Descrivi la tua borsa o il tuo tavolo in quattro o cinque frasi: che cosa c'è?*) Utilise **il y a**, **sur**, **sous** et **dans**. (*Usa **il y a**, **sur**, **sous** e **dans**.*)<!-- it: Usa c'è, sopra, sotto e dentro. --> Si tu ne connais pas le nom d'un objet, cherche-le dans le dictionnaire, et écris-le avec son article. (*Se non conosci il nome di un oggetto, cercalo nel dizionario, e scrivilo con il suo articolo.*)
 
 Lis à voix haute ce que tu as écrit. (*Leggi ad alta voce quello che hai scritto.*)
 <!-- /audio -->

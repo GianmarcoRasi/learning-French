@@ -96,9 +96,17 @@ On salue de façon différente selon la personne. (*Si saluta in modo diverso se
 <!-- /audio -->
 ```
 
-- Text is read in French, *(italic in parentheses)* in Italian. French words quoted
-  inside the Italian, in **bold** or `code`, are read by the French voice, so the
-  Italian voice never pronounces French.
+- Text is read in French, *(italic in parentheses)* in Italian. The Italian voice
+  never says French words: when a translation quotes French (in **bold**, or a group
+  of letters in `code`), it is followed by a comment with what to say instead, which
+  refers to the French without saying it. The comment is invisible on the page:
+
+  ```markdown
+  On utilise **vous**. (*Si usa **vous**.*)<!-- it: Si dà del voi. -->
+  ```
+
+  `make_audio.py` stops with an error if a translation quotes French and has no such
+  comment. A single letter in `code` needs none: the Italian voice says the letter.
 - Each sentence is synthesized on its own and followed by a short gap, because the
   voices pause too long at a full stop. The pause sizes are constants at the top of
   `tools/make_audio.py`.

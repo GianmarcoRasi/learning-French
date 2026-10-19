@@ -5,12 +5,12 @@
 
 **Niveau :** A1 (*Livello: A1*)
 
-**Thèmes :** la famille, les possessifs, les verbes en **-er**, la négation, les questions. (*Argomenti: la famiglia, i possessivi, i verbi in **-er**, la negazione, le domande.*)
+**Thèmes :** la famille, les possessifs, les verbes en **-er**, la négation, les questions. (*Argomenti: la famiglia, i possessivi, i verbi in **-er**, la negazione, le domande.*)<!-- it: Argomenti: la famiglia, i possessivi, i verbi che finiscono in e, r, la negazione, le domande. -->
 
 À la fin de cette leçon, tu sauras : (*Alla fine di questa lezione saprai:*)
 
 - présenter ta famille ; (*presentare la tua famiglia;*)
-- conjuguer les verbes en **-er**, comme **parler** et **habiter** ; (*coniugare i verbi in **-er**, come **parler**, parlare, e **habiter**, abitare;*)
+- conjuguer les verbes en **-er**, comme **parler** et **habiter** ; (*coniugare i verbi in **-er**, come **parler**, parlare, e **habiter**, abitare;*)<!-- it: coniugare i verbi che finiscono in e, r, come parlare e abitare; -->
 - dire ce que tu aimes, et ce que tu n'aimes pas ; (*dire cosa ti piace, e cosa non ti piace;*)
 - faire une phrase négative, et poser une question. (*fare una frase negativa, e fare una domanda.*)
 
@@ -40,7 +40,7 @@ Pour réviser, il existe aussi une [version seulement en français](../french-on
 - **la famille** (*la famiglia*)
 - **le père** (*il padre*)
 - **la mère** (*la madre*)
-- **les parents** (*i genitori*) — Attention : **les parents**, ce sont le père et la mère. (*Attenzione: **les parents** sono i genitori, non i parenti!*)
+- **les parents** (*i genitori*) — Attention : **les parents**, ce sont le père et la mère. (*Attenzione: **les parents** sono i genitori, non i parenti!*)<!-- it: Attenzione: la parola che hai appena sentito vuol dire i genitori, non i parenti! -->
 - **le frère** (*il fratello*)
 - **la sœur** (*la sorella*)
 - **le fils** (*il figlio*) — On prononce le `s`, mais pas le `l`. (*Si pronuncia la `s`, ma non la `l`.*)
@@ -68,7 +68,7 @@ Pour réviser, il existe aussi une [version seulement en français](../french-on
 
 🎧 [02-les-possessifs.mp3](../../audio/french-italian/03-ma-famille/02-les-possessifs.mp3)
 
-Le possessif change selon le mot qui suit : masculin, féminin ou pluriel. (*Il possessivo cambia secondo la parola che segue: maschile, femminile o plurale.*) Attention : en français, il n'y a jamais d'article devant le possessif. On dit **mes parents**, et jamais « les mes parents ». (*Attenzione: in francese non c'è mai l'articolo davanti al possessivo. Si dice **mes parents**, i miei genitori, e mai "les mes parents".*)
+Le possessif change selon le mot qui suit : masculin, féminin ou pluriel. (*Il possessivo cambia secondo la parola che segue: maschile, femminile o plurale.*) Attention : en français, il n'y a jamais d'article devant le possessif. On dit **mes parents**, et jamais « les mes parents ». (*Attenzione: in francese non c'è mai l'articolo davanti al possessivo. Si dice **mes parents**, i miei genitori, e mai "les mes parents".*)<!-- it: Attenzione: in francese non c'è mai l'articolo davanti al possessivo. Si dice miei genitori, senza l'articolo davanti. -->
 
 - **mon père** (*mio padre*)
 - **ma mère** (*mia madre*)
@@ -80,9 +80,9 @@ Le possessif change selon le mot qui suit : masculin, féminin ou pluriel. (*Il 
 - **sa femme** (*sua moglie*)
 - **ses enfants** (*i suoi figli*)
 
-Comme en italien, **son**, **sa** et **ses** s'accordent avec le mot qui suit, et pas avec la personne. (*Come in italiano, **son**, **sa** e **ses** si accordano con la parola che segue, e non con la persona.*) **Sa sœur** peut être la sœur d'un homme, ou la sœur d'une femme. (***Sa sœur** può essere la sorella di un uomo, o la sorella di una donna.*)
+Comme en italien, **son**, **sa** et **ses** s'accordent avec le mot qui suit, et pas avec la personne. (*Come in italiano, **son**, **sa** e **ses** si accordano con la parola che segue, e non con la persona.*)<!-- it: Come in italiano, i possessivi della terza persona si accordano con la parola che segue, e non con la persona. --> **Sa sœur** peut être la sœur d'un homme, ou la sœur d'une femme. (***Sa sœur** può essere la sorella di un uomo, o la sorella di una donna.*)<!-- it: Sua sorella può essere la sorella di un uomo, o la sorella di una donna. -->
 
-Devant un mot féminin qui commence par une voyelle, on utilise **mon**, **ton** et **son**, pour la prononciation. (*Davanti a una parola femminile che comincia per vocale si usano **mon**, **ton** e **son**, per la pronuncia.*)
+Devant un mot féminin qui commence par une voyelle, on utilise **mon**, **ton** et **son**, pour la prononciation. (*Davanti a una parola femminile che comincia per vocale si usano **mon**, **ton** e **son**, per la pronuncia.*)<!-- it: Davanti a una parola femminile che comincia per vocale si usano i possessivi maschili, per la pronuncia. -->
 
 - **mon amie** (*la mia amica*)
 - **ton école** (*la tua scuola*)
@@ -93,7 +93,7 @@ Devant un mot féminin qui commence par une voyelle, on utilise **mon**, **ton**
 
 🎧 [03-les-verbes-en-er.mp3](../../audio/french-italian/03-ma-famille/03-les-verbes-en-er.mp3)
 
-Beaucoup de verbes français se terminent en `er`, comme **parler**. (*Molti verbi francesi finiscono in `er`, come **parler**, parlare.*) Ils se conjuguent tous de la même façon. (*Si coniugano tutti allo stesso modo.*)
+Beaucoup de verbes français se terminent en `er`, comme **parler**. (*Molti verbi francesi finiscono in `er`, come **parler**, parlare.*)<!-- it: Molti verbi francesi finiscono in e, r, come parlare. --> Ils se conjuguent tous de la même façon. (*Si coniugano tutti allo stesso modo.*)
 
 - **je parle** (*io parlo*)
 - **tu parles** (*tu parli*)
@@ -104,9 +104,9 @@ Beaucoup de verbes français se terminent en `er`, comme **parler**. (*Molti ver
 - **ils parlent** (*loro parlano*)
 - **elles parlent** (*loro parlano*)
 
-Écoute bien : **je parle**, **tu parles**, **il parle** et **ils parlent** se prononcent de la même façon ! (*Ascolta bene: **je parle**, **tu parles**, **il parle** e **ils parlent** si pronunciano allo stesso modo!*) Les terminaisons `e`, `es` et `ent` sont muettes. (*Le terminazioni `e`, `es` ed `ent` sono mute.*) On entend la différence seulement avec **nous** et **vous**. (*La differenza si sente solo con **nous** e **vous**.*)
+Écoute bien : **je parle**, **tu parles**, **il parle** et **ils parlent** se prononcent de la même façon ! (*Ascolta bene: **je parle**, **tu parles**, **il parle** e **ils parlent** si pronunciano allo stesso modo!*)<!-- it: Ascolta bene: io parlo, tu parli, lui parla e loro parlano si pronunciano allo stesso modo! --> Les terminaisons `e`, `es` et `ent` sont muettes. (*Le terminazioni `e`, `es` ed `ent` sono mute.*)<!-- it: Le terminazioni sono mute: la e, la e con la s, e la e con la n e la t. --> On entend la différence seulement avec **nous** et **vous**. (*La differenza si sente solo con **nous** e **vous**.*)<!-- it: La differenza si sente solo con noi e voi. -->
 
-D'autres verbes en `er` : (*Altri verbi in `er`:*)
+D'autres verbes en `er` : (*Altri verbi in `er`:*)<!-- it: Altri verbi che finiscono in e, r: -->
 
 - **habiter** (*abitare*)
 - **aimer** (*amare, piacere*)
@@ -115,7 +115,7 @@ D'autres verbes en `er` : (*Altri verbi in `er`:*)
 - **regarder** (*guardare*)
 - **écouter** (*ascoltare*)
 
-Devant une voyelle ou un `h` muet, **je** devient **j'** : **j'aime**, **j'habite**, **j'étudie**. (*Davanti a una vocale o a una `h` muta, **je** diventa **j'**: **j'aime**, **j'habite**, **j'étudie**.*) Avec **nous**, **vous**, **ils** et **elles**, on fait la liaison : **nous aimons**, **ils habitent**. (*Con **nous**, **vous**, **ils** ed **elles** si fa la liaison, e si sente una "z": **nous aimons**, **ils habitent**.*)
+Devant une voyelle ou un `h` muet, **je** devient **j'** : **j'aime**, **j'habite**, **j'étudie**. (*Davanti a una vocale o a una `h` muta, **je** diventa **j'**: **j'aime**, **j'habite**, **j'étudie**.*)<!-- it: Davanti a una vocale o a una h muta, il pronome io perde la e e prende l'apostrofo, come in amo, abito e studio. --> Avec **nous**, **vous**, **ils** et **elles**, on fait la liaison : **nous aimons**, **ils habitent**. (*Con **nous**, **vous**, **ils** ed **elles** si fa la liaison, e si sente una "z": **nous aimons**, **ils habitent**.*)<!-- it: Con noi, voi e loro si fa il legamento, e si sente una "z", come in noi amiamo e loro abitano. -->
 
 #### Phrases en contexte (*Frasi in contesto*)
 
@@ -126,7 +126,7 @@ Devant une voyelle ou un `h` muet, **je** devient **j'** : **j'aime**, **j'habit
 - **Elles écoutent la radio.** (*Ascoltano la radio.*)
 - **Ils regardent la télévision.** (*Guardano la televisione.*)
 
-Pour dire ce qu'on aime, on utilise **aimer** avec l'article défini : **j'aime le café**. (*Per dire cosa ci piace si usa **aimer** con l'articolo determinativo: **j'aime le café**, mi piace il caffè.*) Attention : en français, le sujet est la personne, et pas la chose. (*Attenzione: in francese il soggetto è la persona, e non la cosa: letteralmente, "io amo il caffè".*)
+Pour dire ce qu'on aime, on utilise **aimer** avec l'article défini : **j'aime le café**. (*Per dire cosa ci piace si usa **aimer** con l'articolo determinativo: **j'aime le café**, mi piace il caffè.*)<!-- it: Per dire cosa ci piace si usa il verbo amare con l'articolo determinativo, come in mi piace il caffè. --> Attention : en français, le sujet est la personne, et pas la chose. (*Attenzione: in francese il soggetto è la persona, e non la cosa: letteralmente, "io amo il caffè".*)
 
 - **J'aime le café.** (*Mi piace il caffè.*)
 - **Tu aimes la musique ?** (*Ti piace la musica?*)
@@ -139,7 +139,7 @@ Pour dire ce qu'on aime, on utilise **aimer** avec l'article défini : **j'aime 
 
 🎧 [04-la-negation.mp3](../../audio/french-italian/03-ma-famille/04-la-negation.mp3)
 
-Pour la forme négative, on met **ne** avant le verbe, et **pas** après le verbe. (*Per la forma negativa si mette **ne** prima del verbo, e **pas** dopo il verbo.*) Devant une voyelle, **ne** devient **n'**. (*Davanti a una vocale **ne** diventa **n'**.*)
+Pour la forme négative, on met **ne** avant le verbe, et **pas** après le verbe. (*Per la forma negativa si mette **ne** prima del verbo, e **pas** dopo il verbo.*)<!-- it: Per la forma negativa si mette una parola prima del verbo, e un'altra dopo il verbo. --> Devant une voyelle, **ne** devient **n'**. (*Davanti a una vocale **ne** diventa **n'**.*)<!-- it: Davanti a una vocale la prima parola perde la e e prende l'apostrofo. -->
 
 - **Je ne parle pas allemand.** (*Non parlo tedesco.*)
 - **Tu ne travailles pas ?** (*Non lavori?*)
@@ -147,15 +147,15 @@ Pour la forme négative, on met **ne** avant le verbe, et **pas** après le verb
 - **Nous n'habitons pas ici.** (*Non abitiamo qui.*)
 - **Je n'aime pas le thé.** (*Il tè non mi piace.*)
 
-Après **pas**, les articles **un**, **une** et **des** deviennent **de**, ou **d'** devant une voyelle. (*Dopo **pas** gli articoli **un**, **une** e **des** diventano **de**, o **d'** davanti a una vocale.*)
+Après **pas**, les articles **un**, **une** et **des** deviennent **de**, ou **d'** devant une voyelle. (*Dopo **pas** gli articoli **un**, **une** e **des** diventano **de**, o **d'** davanti a una vocale.*)<!-- it: Nella frase negativa gli articoli indeterminativi diventano tutti uguali, con l'apostrofo davanti a una vocale. -->
 
 - **Je n'ai pas de chien.** (*Non ho un cane.*)
 - **Il n'a pas d'enfants.** (*Non ha figli.*)
 - **Nous n'avons pas de voiture.** (*Non abbiamo la macchina.*)
 
-Mais avec **le**, **la** et **les**, l'article ne change pas : **je n'aime pas le thé**. (*Ma con **le**, **la** e **les** l'articolo non cambia: **je n'aime pas le thé**.*)
+Mais avec **le**, **la** et **les**, l'article ne change pas : **je n'aime pas le thé**. (*Ma con **le**, **la** e **les** l'articolo non cambia: **je n'aime pas le thé**.*)<!-- it: Ma con gli articoli determinativi l'articolo non cambia, come in non mi piace il tè. -->
 
-À l'oral, les Français oublient souvent le **ne** : on entend **je parle pas**. (*Nel parlato i francesi spesso tolgono il **ne**: si sente **je parle pas**.*) Écris toujours **ne**, mais apprends à reconnaître cette forme quand tu écoutes. (*Scrivi sempre **ne**, ma impara a riconoscere questa forma quando ascolti.*)
+À l'oral, les Français oublient souvent le **ne** : on entend **je parle pas**. (*Nel parlato i francesi spesso tolgono il **ne**: si sente **je parle pas**.*)<!-- it: Nel parlato i francesi spesso tolgono la prima parola della negazione, come hai appena sentito. --> Écris toujours **ne**, mais apprends à reconnaître cette forme quand tu écoutes. (*Scrivi sempre **ne**, ma impara a riconoscere questa forma quando ascolti.*)<!-- it: Scrivila sempre, ma impara a riconoscere questa forma quando ascolti. -->
 <!-- /audio -->
 
 <!-- audio:repeat 05-les-questions -->
@@ -163,7 +163,7 @@ Mais avec **le**, **la** et **les**, l'article ne change pas : **je n'aime pas l
 
 🎧 [05-les-questions.mp3](../../audio/french-italian/03-ma-famille/05-les-questions.mp3)
 
-Il y a deux façons simples de poser une question. (*Ci sono due modi semplici per fare una domanda.*) On peut monter la voix à la fin de la phrase, comme en italien. (*Si può alzare il tono della voce alla fine della frase, come in italiano.*) On peut aussi mettre **est-ce que** au début de la phrase. (*Si può anche mettere **est-ce que** all'inizio della frase.*) Devant une voyelle, **est-ce que** devient **est-ce qu'**. (*Davanti a una vocale **est-ce que** diventa **est-ce qu'**.*)
+Il y a deux façons simples de poser une question. (*Ci sono due modi semplici per fare una domanda.*) On peut monter la voix à la fin de la phrase, comme en italien. (*Si può alzare il tono della voce alla fine della frase, come in italiano.*) On peut aussi mettre **est-ce que** au début de la phrase. (*Si può anche mettere **est-ce que** all'inizio della frase.*)<!-- it: Si può anche mettere l'espressione che hai appena sentito all'inizio della frase. --> Devant une voyelle, **est-ce que** devient **est-ce qu'**. (*Davanti a una vocale **est-ce que** diventa **est-ce qu'**.*)<!-- it: Davanti a una vocale questa espressione perde la e e prende l'apostrofo. -->
 
 - **Tu parles anglais ?** (*Parli inglese?*)
 - **Est-ce que tu parles anglais ?** (*Parli inglese?*)
@@ -181,7 +181,7 @@ Les mots interrogatifs : (*Le parole interrogative:*)
 - **Qui est-ce ?** (*Chi è?*)
 - **C'est ma sœur.** (*È mia sorella.*)
 
-Pour répondre « oui » à une question négative, on ne dit pas **oui**, mais **si**. (*Per rispondere di sì a una domanda negativa non si dice **oui**, ma **si**.*)
+Pour répondre « oui » à une question négative, on ne dit pas **oui**, mais **si**. (*Per rispondere di sì a una domanda negativa non si dice **oui**, ma **si**.*)<!-- it: Per rispondere di sì a una domanda negativa non si usa il sì solito, ma un'altra parola, come hai appena sentito. -->
 
 - **Tu n'aimes pas le chocolat ?** (*Non ti piace il cioccolato?*)
 - **Si, j'aime le chocolat !** (*Ma sì, mi piace il cioccolato!*)
@@ -222,7 +222,7 @@ Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses s
 
 ### Exercice 1 — Les possessifs (*Esercizio 1 — I possessivi*)
 
-**a)** Écris **mon**, **ma** ou **mes**. (*Scrivi **mon**, **ma** o **mes**.*)
+**a)** Écris **mon**, **ma** ou **mes**. (*Scrivi **mon**, **ma** o **mes**.*)<!-- it: Scrivi il possessivo giusto della prima persona. -->
 
 1. ___ père
 2. ___ mère
@@ -231,7 +231,7 @@ Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses s
 5. ___ frères
 6. ___ amie
 
-**b)** Écris **ton**, **ta**, **tes**, **son**, **sa** ou **ses**. (*Scrivi **ton**, **ta**, **tes**, **son**, **sa** o **ses**.*)
+**b)** Écris **ton**, **ta**, **tes**, **son**, **sa** ou **ses**. (*Scrivi **ton**, **ta**, **tes**, **son**, **sa** o **ses**.*)<!-- it: Scrivi il possessivo giusto della seconda o della terza persona. -->
 
 1. Paul, c'est ___ cousin ? — tu
 2. Marie et ___ mari. — elle
@@ -260,7 +260,7 @@ Prends une feuille et un stylo. (*Prendi carta e penna.*) Écris les réponses s
 
 ### Exercice 4 — Est-ce que… ? (*Esercizio 4 — Fare domande*)
 
-Écris les questions avec **est-ce que**. (*Scrivi le domande con **est-ce que**.*)
+Écris les questions avec **est-ce que**. (*Scrivi le domande con **est-ce que**.*)<!-- it: Scrivi le domande con la forma interrogativa che hai imparato. -->
 
 1. Tu habites à Rome.
 2. Vous avez des enfants.
