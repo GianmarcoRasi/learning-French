@@ -23,8 +23,8 @@ from markdown_it import MarkdownIt
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSIONS = [
-    ("french-italian", "Avec la traduction"),
     ("french-only", "Seulement en français"),
+    ("french-italian", "Avec la traduction"),
 ]
 
 KOFI = "https://ko-fi.com/qwark992"
@@ -95,8 +95,9 @@ audio { display: block; width: 100%; margin: 0.6em 0 1em; }
 .support { margin-top: 3em; text-align: center; font-size: 15px; color: var(--muted); }
 """
 
-# Only one track plays at a time, and the speed button sets the speed of
-# every track (remembered between visits).
+# Only one track plays at a time, the speed button sets the speed of every
+# track (remembered between visits), and the play-all button plays the tracks
+# of the lesson one after the other, from the one playing or the first.
 SCRIPT = """
 const speeds = [1, 0.85, 0.7, 1.15];
 const button = document.getElementById('speed');
@@ -118,6 +119,41 @@ document.addEventListener('play', e => {
   e.target.playbackRate = speed;
 }, true);
 applySpeed();
+
+const tracks = [...document.querySelectorAll('main audio')];
+const all = document.getElementById('all');
+let playingAll = false;
+function setAll(on) {
+  playingAll = on;
+  all.textContent = on ? '⏸ Pause' : '▶ Tout';
+}
+function playTrack(a) {
+  a.play();
+  a.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+if (!tracks.length) all.hidden = true;
+all.addEventListener('click', () => {
+  if (playingAll) {
+    tracks.forEach(a => a.pause());
+    return;
+  }
+  const current = tracks.find(a => a.currentTime > 0 && !a.ended) || tracks[0];
+  setAll(true);
+  playTrack(current);
+});
+tracks.forEach((a, i) => {
+  a.addEventListener('ended', () => {
+    if (!playingAll) return;
+    if (i + 1 < tracks.length) {
+      playTrack(tracks[i + 1]);
+    } else {
+      setAll(false);
+    }
+  });
+  a.addEventListener('pause', () => {
+    if (!a.ended && !tracks.some(t => t !== a && !t.paused)) setAll(false);
+  });
+});
 """
 
 
@@ -182,6 +218,7 @@ def build(out):
                 '<a href="../../index.html">← Leçons</a>'
                 '<span class="grow"></span>'
                 f'<a href="../{other}/{path.stem}.html">{label}</a>'
+                '<button id="all" type="button">▶ Tout</button>'
                 '<button id="speed" type="button" aria-label="Vitesse">1×</button>'
                 "</div></nav>"
             )

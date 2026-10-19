@@ -4,11 +4,11 @@ A French course for Italian speakers, to learn to speak and write French from sc
 
 ## Lessons
 
-| # | Lesson | French only | Topics |
+| # | French only | With Italian translation | Topics |
 |---|---|---|---|
-| 1 | [Bonjour !](lessons/french-italian/01-bonjour.md) | [Bonjour !](lessons/french-only/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
-| 2 | [Qu'est-ce que c'est ?](lessons/french-italian/02-qu-est-ce-que-c-est.md) | [Qu'est-ce que c'est ?](lessons/french-only/02-qu-est-ce-que-c-est.md) | numbers 0–20, nasal vowels, articles and gender, *c'est* and *il y a*, the verb *avoir*, age |
-| 3 | [Ma famille](lessons/french-italian/03-ma-famille.md) | [Ma famille](lessons/french-only/03-ma-famille.md) | family, possessives, *-er* verbs and *aimer*, negation, questions with *est-ce que* and *si* |
+| 1 | [Bonjour !](lessons/french-only/01-bonjour.md) | [Bonjour !](lessons/french-italian/01-bonjour.md) | greetings, *tu* and *vous*, introducing yourself, nationalities, the verb *être* |
+| 2 | [Qu'est-ce que c'est ?](lessons/french-only/02-qu-est-ce-que-c-est.md) | [Qu'est-ce que c'est ?](lessons/french-italian/02-qu-est-ce-que-c-est.md) | numbers 0–20, nasal vowels, articles and gender, *c'est* and *il y a*, the verb *avoir*, age |
+| 3 | [Ma famille](lessons/french-only/03-ma-famille.md) | [Ma famille](lessons/french-italian/03-ma-famille.md) | family, possessives, *-er* verbs and *aimer*, negation, questions with *est-ce que* and *si* |
 
 ## Support
 
@@ -19,7 +19,8 @@ If the course helps you, you can [buy me a coffee on Ko-fi](https://ko-fi.com/qw
 The lessons are also published as a website, with an audio player in the text
 of each section: <https://gianmarcorasi.github.io/learning-French/>. On the phone,
 use *Add to Home Screen* (Safari's share menu, or Chrome's ⋮ menu) to open it like
-an app. The **1×** button at the top changes the speed of the audio.
+an app. The **▶ Tout** button at the top plays all the audio of the lesson, one track
+after the other, and the **1×** button changes the speed of the audio.
 
 The site is built by [`tools/build_site.py`](tools/build_site.py) and published by
 [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every push to `main`.
