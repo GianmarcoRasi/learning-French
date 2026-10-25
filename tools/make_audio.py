@@ -11,15 +11,18 @@ Each lesson marks the parts to be read aloud with HTML comments:
     ...
     <!-- /audio -->
 
-Inside a block, text is French and *(italic in parentheses)* is its Italian
-translation, read by the Italian voice. The Italian voice never says French:
-when a translation quotes French words (in **bold**, or a group of letters in
-`code`), it is followed by what to say instead, in a comment:
+Each lesson is written once for each language of translation, in
+lessons/french-<language>/ (french-italian, french-english). Inside a block,
+text is French and *(italic in parentheses)* is its translation, read by the
+voice of that language. That voice never says French: when a translation
+quotes French words (in **bold**, or a group of letters in `code`), it is
+followed by what to say instead, in a comment tagged with the language:
 
     (*Con gli amici si usa **tu**.*)<!-- it: Con gli amici si dà del tu. -->
+    (*With friends you use **tu**.*)<!-- en: With friends you use the informal word. -->
 
 The script stops if one is missing. Single letters in `code` are fine: the
-Italian voice says the letter.
+voice says the letter.
 
 - `repeat` blocks are read in order. A list item of the form
   `**French** (*Italiano*) notes` is a drill: French, Italian, notes,
@@ -30,18 +33,18 @@ Italian voice says the letter.
   declared after the `|`.
 
 Blocks with the same name go into the same track,
-audio/french-italian/<lesson>/<name>.mp3.
+audio/french-<language>/<lesson>/<name>.mp3.
 
 Each lesson also has a French-only version, for review: the script writes it
-to lessons/french-only/<lesson>.md, without the translations, and builds its
-tracks in audio/french-only/<lesson>/. Lines that are only Italian (exercise
-items to translate) are kept. Text between <!-- bilingual --> and
+from the Italian lesson to lessons/french-only/<lesson>.md, without the
+translations, and builds its tracks in audio/french-only/<lesson>/. Lines
+that are only Italian (exercise items to translate) are kept. Text between <!-- bilingual --> and
 <!-- /bilingual --> is left out of it; text in a <!-- french-only ... -->
 comment appears only in it.
 
 Usage:
     python tools/make_audio.py                     # all lessons
-    python tools/make_audio.py lessons/french-italian/01-bonjour.md
+    python tools/make_audio.py lessons/french-english/01-bonjour.md
     python tools/make_audio.py --dry-run lessons/french-italian/01-bonjour.md
 """
 
@@ -58,7 +61,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / ".audio-cache"
 
-NARRATOR = "it-IT-ElsaNeural"
 FRENCH = "fr-FR-DeniseNeural"
 SPEAKER_VOICES = {
     "f": ["fr-FR-DeniseNeural", "fr-FR-VivienneMultilingualNeural"],
@@ -67,7 +69,7 @@ SPEAKER_VOICES = {
 
 FRENCH_RATE = "-10%"      # slightly slower than normal speech
 ECHO_RATE = "-20%"        # the French repeated right before the pause
-ITALIAN_RATE = "+0%"
+TRANSLATION_RATE = "+0%"
 
 TRANSLATION_GAP = 0.25    # between a French sentence and its Italian translation
 SENTENCE_GAP = 0.5        # between one sentence (or French/Italian pair) and the next
@@ -77,13 +79,36 @@ REPEAT_FACTOR = 1.2       # pause = this × length of the French + REPEAT_EXTRA
 REPEAT_EXTRA = 1.0
 REPEAT_MIN = 2.0
 
-# What the voice says around the lesson text, French first.
-DRILL_START = [("fr", "Écoute et répète."), ("it", "Ascolta e ripeti.")]
+# The languages of translation: the lesson folder, the tag of the comments
+# with what the voice says instead of French, the voice, and what it says
+# around the lesson text (after the French, in the same order).
+TRANSLATIONS = {
+    "french-italian": {
+        "tag": "it",
+        "voice": "it-IT-ElsaNeural",
+        "drill_start": "Ascolta e ripeti.",
+        "first_listen": "Primo ascolto. Ascolta senza leggere.",
+        "second_listen": "Secondo ascolto, con la traduzione.",
+        "read_aloud": "Ora leggi il testo ad alta voce.",
+    },
+    "french-english": {
+        "tag": "en",
+        "voice": "en-US-JennyNeural",
+        "drill_start": "Listen and repeat.",
+        "first_listen": "First listening. Listen without reading.",
+        "second_listen": "Second listening, with the translation.",
+        "read_aloud": "Now read the text aloud.",
+    },
+}
+FRENCH_ONLY_SOURCE = "french-italian"   # the lessons the French-only version is made from
+
+# What the voice says around the lesson text, in French.
+DRILL_START = "Écoute et répète."
 REPEAT = "Répète."
-FIRST_LISTEN = [("fr", "Première écoute. Écoute sans lire."), ("it", "Primo ascolto. Ascolta senza leggere.")]
-SECOND_LISTEN = [("fr", "Deuxième écoute, avec la traduction."), ("it", "Secondo ascolto, con la traduzione.")]
-READ_ALOUD = [("fr", "Maintenant, lis le texte à voix haute."), ("it", "Ora leggi il testo ad alta voce.")]
-ONLY_LISTEN = [("fr", "Écoute sans lire.")]   # the single listening of the French-only version
+FIRST_LISTEN = "Première écoute. Écoute sans lire."
+SECOND_LISTEN = "Deuxième écoute, avec la traduction."
+READ_ALOUD = "Maintenant, lis le texte à voix haute."
+ONLY_LISTEN = "Écoute sans lire."   # the single listening of the French-only version
 
 SAMPLE_RATE = 24000
 
@@ -92,7 +117,7 @@ BLOCK_RE = re.compile(
     r"(?P<body>.*?)<!--\s*/audio\s*-->",
     re.S,
 )
-SAY_RE = r"(?:\s*<!--\s*it:\s*(?P<say>.*?)\s*-->)?"
+SAY_RE = r"(?:\s*<!--\s*(?P<tag>[a-z]{2}):\s*(?P<say>.*?)\s*-->)?"
 DRILL_RE = re.compile(r"^\*\*(?P<fr>[^*]+?)\*\*\s*\(\*(?P<it>.+?)\*\)" + SAY_RE + r"(?P<rest>.*)$")
 SPEAKER_RE = re.compile(r"^\*\*(?P<speaker>[^*]+?)\s*:\s*\*\*\s*(?P<line>.*)$")
 TRANSLATION_RE = re.compile(r"\(\*(?P<it>.+?)\*\)" + SAY_RE)
@@ -122,34 +147,37 @@ def spoken(text):
     return any(c.isalnum() for c in text)
 
 
-def italian(m):
-    """What the Italian voice says for a (*translation*) matched by m."""
+def translation(m, tr):
+    """What the voice of the translation says for a (*translation*) matched by m."""
     if m["say"]:
+        if m["tag"] != tr["tag"]:
+            raise ValueError(f"<!-- {m['tag']}: ... --> in a lesson translated with {tr['tag']}: {m['say']}")
         return m["say"]
     # Bold is French; so is a group of letters in code, but not a single letter.
     if any(q.startswith("**") or len(q) > 3 for q in FRENCH_QUOTE_RE.findall(m["it"])):
-        raise ValueError(f"French words in an Italian translation, add <!-- it: ... --> after it: {m['it']}")
+        raise ValueError(f"French words in a translation, add <!-- {tr['tag']}: ... --> after it: {m['it']}")
     return m["it"]
 
 
-def split_languages(text):
-    """French text with (*Italian*) translations, each said in one voice."""
+def split_languages(text, tr):
+    """French text with (*translations*), each said in one voice."""
     out, pos = [], 0
     for m in TRANSLATION_RE.finditer(text):
-        out += [("fr", text[pos:m.start()]), ("it", italian(m))]
+        out += [("fr", text[pos:m.start()]), ("tr", translation(m, tr))]
         pos = m.end()
     out.append(("fr", text[pos:]))
     return out
 
 
-def segments(text, french_only=False):
-    """Split a line of markdown into the (lang, text) pieces to say.
+def segments(text, tr, french_only=False):
+    """Split a line of markdown into the (lang, text) pieces to say, lang
+    being "fr" or "tr" (the translation).
 
     In the French-only version the translations are dropped, unless the line
-    is all Italian.
+    is all translation.
     """
     merged = []
-    for lang, piece in split_languages(text):
+    for lang, piece in split_languages(text, tr):
         piece = clean(piece)
         if not piece:
             continue
@@ -197,7 +225,7 @@ def say(voice, text, rate=None):
     on its own and followed by a shorter gap.
     """
     if rate is None:
-        rate = ITALIAN_RATE if voice == NARRATOR else FRENCH_RATE
+        rate = FRENCH_RATE if voice.startswith("fr-") else TRANSLATION_RATE
     steps = []
     for sentence in SENTENCE_END_RE.split(text):
         if not spoken(sentence):
@@ -208,37 +236,43 @@ def say(voice, text, rate=None):
     return steps
 
 
-def read(segs, french=FRENCH, gap=SENTENCE_GAP):
+def read(segs, tr, french=FRENCH, gap=SENTENCE_GAP):
     steps = []
     for i, (lang, text) in enumerate(segs):
-        translated = lang == "fr" and i + 1 < len(segs) and segs[i + 1][0] == "it"
-        steps += say(french if lang == "fr" else NARRATOR, text)
+        translated = lang == "fr" and i + 1 < len(segs) and segs[i + 1][0] == "tr"
+        steps += say(french if lang == "fr" else tr["voice"], text)
         steps.append(("pause", TRANSLATION_GAP if translated else gap))
     return steps
 
 
-def french(prompt):
-    return [s for s in prompt if s[0] == "fr"]
+def french(segs):
+    return [s for s in segs if s[0] == "fr"]
 
 
-def repeat_script(body, french_only=False):
+def prompt(fr, tr, key, french_only=False):
+    """What the voice says around the lesson text: French, then translation."""
+    return [("fr", fr)] if french_only else [("fr", fr), ("tr", tr[key])]
+
+
+def repeat_script(body, tr, french_only=False):
     steps = []
     in_drill = False
     for kind, text in elements(body):
         m = DRILL_RE.match(text) if kind == "item" else None
         if not m:
             in_drill = False
-            steps += read(segments(text, french_only)) + [("pause", 0.4 if kind == "heading" else 0.1)]
+            steps += read(segments(text, tr, french_only), tr) + [("pause", 0.4 if kind == "heading" else 0.1)]
             continue
         if not in_drill:
-            steps += read(french(DRILL_START) if french_only else DRILL_START) + [("pause", 0.3)]
+            steps += read(prompt(DRILL_START, tr, "drill_start", french_only), tr) + [("pause", 0.3)]
             in_drill = True
-        fr, it = clean(m["fr"]), clean(italian(m))
+        fr, translated = clean(m["fr"]), clean(translation(m, tr))
         if french_only:
             steps += say(FRENCH, fr) + [("pause", SENTENCE_GAP)]
         else:
-            steps += say(FRENCH, fr) + [("pause", TRANSLATION_GAP)] + say(NARRATOR, it) + [("pause", SENTENCE_GAP)]
-        steps += read(segments(m["rest"], french_only))
+            steps += (say(FRENCH, fr) + [("pause", TRANSLATION_GAP)]
+                      + say(tr["voice"], translated) + [("pause", SENTENCE_GAP)])
+        steps += read(segments(m["rest"], tr, french_only), tr)
         steps += say(FRENCH, REPEAT) + [("pause", 0.3)] + say(FRENCH, fr, ECHO_RATE) + [("repeat_pause",)]
     return steps
 
@@ -256,29 +290,32 @@ def parse_voices(spec):
     return voices
 
 
-def listen_script(body, voices_spec, french_only=False):
+def listen_script(body, voices_spec, tr, french_only=False):
     voices = parse_voices(voices_spec)
     title, lines = [], []   # lines: (voice, [(lang, text), ...])
     for kind, text in elements(body):
         if kind == "heading":
-            title = segments(text, french_only)
+            title = segments(text, tr, french_only)
             continue
         voice = FRENCH
         m = SPEAKER_RE.match(text) if kind == "item" else None
         if m:
             voice, text = voices.get(m["speaker"], FRENCH), m["line"]
-        lines.append((voice, segments(text)))
+        lines.append((voice, segments(text, tr)))
 
-    steps = read(title) + [("pause", 0.7)]
-    steps += read(ONLY_LISTEN if french_only else FIRST_LISTEN) + [("pause", 0.7)]
-    for voice, segs in lines:
-        steps += read(french(segs), french=voice, gap=0.7)
+    steps = read(title, tr) + [("pause", 0.7)]
     if french_only:
-        return steps + [("pause", 1.0)] + read(french(READ_ALOUD)) + [("pause", 1.5)]
-    steps += [("pause", 1.0)] + read(SECOND_LISTEN) + [("pause", 0.7)]
+        steps += read([("fr", ONLY_LISTEN)], tr) + [("pause", 0.7)]
+    else:
+        steps += read(prompt(FIRST_LISTEN, tr, "first_listen"), tr) + [("pause", 0.7)]
     for voice, segs in lines:
-        steps += read(segs, french=voice) + [("pause", 0.3)]
-    steps += [("pause", 0.7)] + read(READ_ALOUD) + [("pause", 1.5)]
+        steps += read(french(segs), tr, french=voice, gap=0.7)
+    if french_only:
+        return steps + [("pause", 1.0)] + read([("fr", READ_ALOUD)], tr) + [("pause", 1.5)]
+    steps += [("pause", 1.0)] + read(prompt(SECOND_LISTEN, tr, "second_listen"), tr) + [("pause", 0.7)]
+    for voice, segs in lines:
+        steps += read(segs, tr, french=voice) + [("pause", 0.3)]
+    steps += [("pause", 0.7)] + read(prompt(READ_ALOUD, tr, "read_aloud"), tr) + [("pause", 1.5)]
     return steps
 
 
@@ -289,14 +326,14 @@ def version(text, french_only):
     return FRENCH_ONLY_RE.sub("", BILINGUAL_RE.sub(r"\1", text))
 
 
-def lesson_tracks(text, french_only=False):
+def lesson_tracks(text, tr, french_only=False):
     """{track name: steps}, in the order the tracks appear in the lesson."""
     tracks = {}
     for m in BLOCK_RE.finditer(version(text, french_only)):
         if m["mode"] == "repeat":
-            steps = repeat_script(m["body"], french_only)
+            steps = repeat_script(m["body"], tr, french_only)
         else:
-            steps = listen_script(m["body"], m["voices"], french_only)
+            steps = listen_script(m["body"], m["voices"], tr, french_only)
         tracks.setdefault(m["name"], []).extend(steps)
     return tracks
 
@@ -305,7 +342,7 @@ def french_only_markdown(text, name):
     """The French-only version of a lesson, as markdown."""
     lines = []
     for line in version(text, french_only=True).splitlines():
-        stripped = re.sub(r"\s*\(\*.+?\*\)(\s*<!--\s*it:.*?-->)?|\s*\(<i>.+?</i>\)", "", line).rstrip()
+        stripped = re.sub(r"\s*\(\*.+?\*\)(\s*<!--\s*[a-z]{2}:.*?-->)?|\s*\(<i>.+?</i>\)", "", line).rstrip()
         # Keep the lines that are only a translation: exercise items.
         if re.sub(r"^\s*([-*+]|\d+\.)?\s*", "", stripped):
             line = stripped
@@ -412,15 +449,25 @@ async def main():
     parser.add_argument("--only", help="generate only the track with this name")
     args = parser.parse_args()
 
-    lessons = args.lessons or sorted((ROOT / "lessons" / "french-italian").glob("*.md"))
+    lessons = args.lessons or [
+        path for folder in TRANSLATIONS for path in sorted((ROOT / "lessons" / folder).glob("*.md"))
+    ]
     for lesson in lessons:
+        lesson = lesson.resolve()
+        folder = lesson.parent.name
+        if folder not in TRANSLATIONS:
+            sys.exit(f"{lesson}: not in one of the folders {', '.join(TRANSLATIONS)}")
+        tr = TRANSLATIONS[folder]
         text = lesson.read_text(encoding="utf-8")
-        if not args.dry_run:
-            out = ROOT / "lessons" / "french-only" / lesson.name
-            out.parent.mkdir(exist_ok=True)
-            out.write_text(french_only_markdown(text, lesson.stem), encoding="utf-8")
-        for french_only, folder in [(False, ROOT / "audio" / "french-italian"), (True, ROOT / "audio" / "french-only")]:
-            for name, steps in lesson_tracks(text, french_only).items():
+        versions = [(False, ROOT / "audio" / folder)]
+        if folder == FRENCH_ONLY_SOURCE:
+            versions.append((True, ROOT / "audio" / "french-only"))
+            if not args.dry_run:
+                out = ROOT / "lessons" / "french-only" / lesson.name
+                out.parent.mkdir(exist_ok=True)
+                out.write_text(french_only_markdown(text, lesson.stem), encoding="utf-8")
+        for french_only, folder in versions:
+            for name, steps in lesson_tracks(text, tr, french_only).items():
                 if args.only and name != args.only:
                     continue
                 out = folder / lesson.stem / f"{name}.mp3"

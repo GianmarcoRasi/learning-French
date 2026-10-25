@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build the lessons website, to read and listen to the lessons on a phone.
 
-Every lesson in lessons/french-italian/ and lessons/french-only/ becomes an
-HTML page, and each 🎧 link to a track becomes an audio player in the text.
+Every lesson in lessons/french-only/, lessons/french-italian/ and
+lessons/french-english/ becomes an HTML page, and each 🎧 link to a track becomes an audio player in the text.
 The audio files are copied next to the pages, with the same relative paths
 as in the repository, so the links in the lessons keep working.
 
@@ -22,16 +22,28 @@ from pathlib import Path
 from markdown_it import MarkdownIt
 
 ROOT = Path(__file__).resolve().parent.parent
+# (folder, link on the home page, link in the bar of the lesson pages)
 VERSIONS = [
-    ("french-only", "Seulement en français"),
-    ("french-italian", "Avec la traduction"),
+    ("french-only", "Seulement en français", "Français"),
+    ("french-italian", "Con l'italiano", "Italiano"),
+    ("french-english", "With English", "English"),
 ]
 
 KOFI = "https://ko-fi.com/qwark992"
-SUPPORT = (
-    f'<p class="support">Ce cours te plaît ? (<em>Ti piace questo corso?</em>) '
-    f'<a href="{KOFI}">☕ Offre-moi un café</a> (<em>Offrimi un caffè</em>)</p>'
-)
+SUPPORT = {
+    "french-only": (
+        f'<p class="support">Ce cours te plaît ? '
+        f'<a href="{KOFI}">☕ Offre-moi un café</a></p>'
+    ),
+    "french-italian": (
+        f'<p class="support">Ce cours te plaît ? (<em>Ti piace questo corso?</em>) '
+        f'<a href="{KOFI}">☕ Offre-moi un café</a> (<em>Offrimi un caffè</em>)</p>'
+    ),
+    "french-english": (
+        f'<p class="support">Ce cours te plaît ? (<em>Do you like this course?</em>) '
+        f'<a href="{KOFI}">☕ Offre-moi un café</a> (<em>Buy me a coffee</em>)</p>'
+    ),
+}
 
 # A paragraph that is only a 🎧 link to a track, as written in the lessons.
 AUDIO_LINK = re.compile(r'<p>🎧 <a href="([^"]+\.mp3)">([^<]+)</a></p>')
@@ -76,17 +88,18 @@ audio { display: block; width: 100%; margin: 0.6em 0 1em; }
 }
 .bar div {
   max-width: 720px; margin: 0 auto; padding: 10px 16px;
-  display: flex; gap: 12px; align-items: center; font-size: 15px;
+  display: flex; gap: 8px; align-items: center; font-size: 15px;
 }
-.bar a { text-decoration: none; }
+.bar a { text-decoration: none; white-space: nowrap; }
 .bar .grow { flex: 1; }
+@media (max-width: 350px) { .bar div { gap: 5px; font-size: 13px; } }
 .bar [hidden] { display: none; }
 .bar .now { flex-wrap: wrap; padding-top: 0; color: var(--muted); font-size: 14px; }
 .bar .now span { min-width: 0; }
 .bar .now audio { margin: 0; }
 .bar button {
   font: inherit; color: var(--fg); background: var(--card);
-  border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px;
+  border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px;
   white-space: nowrap;
 }
 .lessons { list-style: none; padding: 0; }
@@ -310,7 +323,7 @@ def build(out):
 
     md = MarkdownIt("commonmark", {"typographer": False}).enable("table")
     lessons = {}
-    for version, _ in VERSIONS:
+    for version, _, _ in VERSIONS:
         for path in sorted((ROOT / "lessons" / version).glob("*.md")):
             text = path.read_text(encoding="utf-8")
             title = lesson_title(text)
@@ -318,13 +331,16 @@ def build(out):
             plain = re.sub(r"[*_]", "", title)
             lessons.setdefault(path.stem, {})[version] = plain
 
-            other = next(v for v, _ in VERSIONS if v != version)
-            label = dict(VERSIONS)[other]
+            others = "".join(
+                f'<a href="../{other}/{path.stem}.html">{label}</a>'
+                for other, _, label in VERSIONS
+                if other != version and (ROOT / "lessons" / other / path.name).exists()
+            )
             bar = (
                 '<nav class="bar"><div>'
                 '<a href="../../index.html">← Leçons</a>'
                 '<span class="grow"></span>'
-                f'<a href="../{other}/{path.stem}.html">{label}</a>'
+                f"{others}"
                 '<button id="all" type="button">▶ Tout</button>'
                 '<button id="speed" type="button" aria-label="Vitesse">1×</button>'
                 "</div>"
@@ -334,17 +350,18 @@ def build(out):
                 '<audio id="player" controls preload="auto" hidden></audio>'
                 "</div></nav>"
             )
-            body = render_lesson(md, text) + SUPPORT + f"<script>{SCRIPT}</script>"
+            body = render_lesson(md, text) + SUPPORT[version] + f"<script>{SCRIPT}</script>"
             target = out / "lessons" / version / f"{path.stem}.html"
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(page(plain, body, "../../", bar), encoding="utf-8")
 
     items = []
     for stem, titles in sorted(lessons.items()):
-        name = titles.get("french-italian") or next(iter(titles.values()))
+        # The French title, without the translation, which differs in each version.
+        name = re.sub(r"\s*\(.*\)$", "", titles.get("french-only") or next(iter(titles.values())))
         links = "".join(
             f'<a href="lessons/{version}/{stem}.html">{label}</a>'
-            for version, label in VERSIONS
+            for version, label, _ in VERSIONS
             if version in titles
         )
         items.append(
@@ -352,10 +369,11 @@ def build(out):
         )
     index = (
         "<h1>Apprendre le français</h1>"
-        '<p class="note">Un cours de français pour les italiens. '
-        "(<em>Un corso di francese per italiani.</em>)</p>"
+        '<p class="note">Un cours de français pour les italiens et les anglophones. '
+        "(<em>Un corso di francese per italiani.</em>) "
+        "(<em>A French course for English speakers.</em>)</p>"
         f'<ul class="lessons">{"".join(items)}</ul>'
-        + SUPPORT
+        + SUPPORT["french-italian"]
     )
     (out / "index.html").write_text(page("Apprendre le français", index, ""), encoding="utf-8")
     (out / "manifest.webmanifest").write_text(
