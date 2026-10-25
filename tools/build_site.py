@@ -80,9 +80,14 @@ audio { display: block; width: 100%; margin: 0.6em 0 1em; }
 }
 .bar a { text-decoration: none; }
 .bar .grow { flex: 1; }
+.bar [hidden] { display: none; }
+.bar .now { flex-wrap: wrap; padding-top: 0; color: var(--muted); font-size: 14px; }
+.bar .now span { min-width: 0; }
+.bar .now audio { margin: 0; }
 .bar button {
   font: inherit; color: var(--fg); background: var(--card);
   border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px;
+  white-space: nowrap;
 }
 .lessons { list-style: none; padding: 0; }
 .lessons li {
@@ -95,9 +100,19 @@ audio { display: block; width: 100%; margin: 0.6em 0 1em; }
 .support { margin-top: 3em; text-align: center; font-size: 15px; color: var(--muted); }
 """
 
-# Only one track plays at a time, the speed button sets the speed of every
-# track (remembered between visits), and the play-all button plays the tracks
-# of the lesson one after the other, from the one playing or the first.
+# Only one track plays at a time, and the speed button sets the speed of every
+# track (remembered between visits).
+#
+# The play-all button plays the tracks of the lesson one after the other in a
+# single player in the top bar, which changes track when one ends: phones keep
+# a page playing with the screen off only if it is the same audio element, and
+# refuse to start another one in the background. The lock screen gets
+# play/pause, previous/next and ±10 s buttons (Media Session).
+#
+# The last position heard (track and time, from the player or a track in the
+# text) is remembered for each lesson, also after the page is closed: when
+# playback is interrupted (a call, the browser closing the page) the button
+# becomes "Reprendre" and goes on from there, a few seconds earlier.
 SCRIPT = """
 const speeds = [1, 0.85, 0.7, 1.15];
 const button = document.getElementById('speed');
@@ -114,46 +129,138 @@ button.addEventListener('click', () => {
   try { localStorage.setItem('speed', speed); } catch (e) {}
   applySpeed();
 });
+let last = null;  // the audio that played last, for the lock-screen buttons
 document.addEventListener('play', e => {
   document.querySelectorAll('audio').forEach(a => { if (a !== e.target) a.pause(); });
   e.target.playbackRate = speed;
+  last = e.target;
 }, true);
 applySpeed();
 
-const tracks = [...document.querySelectorAll('main audio')];
-const all = document.getElementById('all');
-let playingAll = false;
-function setAll(on) {
-  playingAll = on;
-  all.textContent = on ? '⏸ Pause' : '▶ Tout';
-}
-function playTrack(a) {
-  a.play();
-  a.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-if (!tracks.length) all.hidden = true;
-all.addEventListener('click', () => {
-  if (playingAll) {
-    tracks.forEach(a => a.pause());
-    return;
+(() => {
+  const tracks = [...document.querySelectorAll('main audio')];
+  const all = document.getElementById('all');
+  const now = document.getElementById('now');
+  const nowTitle = document.getElementById('now-title');
+  const player = document.getElementById('player');
+  if (!tracks.length) { all.hidden = true; return; }
+  const BACK = 3;  // seconds replayed when resuming
+  const key = 'position:' + location.pathname;
+  let index = -1;  // the track loaded in the player
+  // Each track is named after the heading of its section.
+  const names = tracks.map(a => {
+    for (let e = a; (e = e.previousElementSibling); ) {
+      if (/^H[1-3]$/.test(e.tagName)) return e.textContent;
+    }
+    return a.title;
+  });
+
+  function save(i, t) {
+    try { localStorage.setItem(key, JSON.stringify({ i, t })); } catch (e) {}
   }
-  const current = tracks.find(a => a.currentTime > 0 && !a.ended) || tracks[0];
-  setAll(true);
-  playTrack(current);
-});
-tracks.forEach((a, i) => {
-  a.addEventListener('ended', () => {
-    if (!playingAll) return;
-    if (i + 1 < tracks.length) {
-      playTrack(tracks[i + 1]);
+  function saved() {
+    try {
+      const p = JSON.parse(localStorage.getItem(key));
+      if (p && tracks[p.i]) return p;
+    } catch (e) {}
+    return null;
+  }
+  function forget() {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  function update() {
+    const p = saved();
+    all.textContent = !player.paused ? '⏸ Pause' : p ? '▶ Reprendre' : '▶ Tout';
+    const i = !player.paused || !p ? index : p.i;
+    now.hidden = i < 0;
+    player.hidden = index < 0;
+    if (i >= 0) nowTitle.textContent = (i + 1) + '/' + tracks.length + ' · ' + names[i];
+  }
+
+  function show(i) {
+    if (!document.hidden) tracks[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function playAll(i, t) {
+    if (i !== index || player.error) {
+      index = i;
+      player.src = tracks[i].src;
+    }
+    // play() first, while still in the tap that asked for it.
+    player.play().catch(update);
+    if (t) {
+      if (player.readyState >= 1) player.currentTime = t;
+      else player.addEventListener('loadedmetadata', () => { player.currentTime = t; }, { once: true });
+    }
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: names[i], artist: document.title, album: 'Apprendre le français',
+      });
+    }
+    show(i);
+    update();
+  }
+
+  function resume() {
+    const p = saved() || { i: 0, t: 0 };
+    playAll(p.i, Math.max(0, p.t - BACK));
+  }
+
+  all.addEventListener('click', () => {
+    if (!player.paused) player.pause();
+    else resume();
+  });
+  document.getElementById('restart').addEventListener('click', () => playAll(0, 0));
+
+  player.addEventListener('timeupdate', () => {
+    if (index >= 0 && player.currentTime > 0) save(index, player.currentTime);
+  });
+  player.addEventListener('ended', () => {
+    if (index + 1 < tracks.length) {
+      playAll(index + 1, 0);
     } else {
-      setAll(false);
+      forget();
+      index = -1;
+      update();
     }
   });
-  a.addEventListener('pause', () => {
-    if (!a.ended && !tracks.some(t => t !== a && !t.paused)) setAll(false);
+  ['play', 'pause', 'error'].forEach(e => player.addEventListener(e, update));
+
+  tracks.forEach((a, i) => {
+    a.addEventListener('timeupdate', () => {
+      if (a.currentTime > 0 && !a.ended) save(i, a.currentTime);
+      update();
+    });
+    a.addEventListener('ended', () => {
+      if (i + 1 < tracks.length) save(i + 1, 0);
+      else forget();
+      update();
+    });
   });
-});
+
+  // Back to the page: show the section that is playing.
+  document.addEventListener('visibilitychange', () => {
+    if (!player.paused && index >= 0) show(index);
+  });
+
+  if ('mediaSession' in navigator) {
+    const on = (action, handler) => {
+      try { navigator.mediaSession.setActionHandler(action, handler); } catch (e) {}
+    };
+    const current = () => (last && last !== player ? tracks.indexOf(last) : index);
+    on('play', () => { if (last && last !== player) last.play(); else resume(); });
+    on('pause', () => { if (last) last.pause(); });
+    on('previoustrack', () => playAll(Math.max(0, current() - 1), 0));
+    on('nexttrack', () => {
+      if (current() + 1 < tracks.length) playAll(current() + 1, 0);
+    });
+    on('seekbackward', () => { if (last) last.currentTime = Math.max(0, last.currentTime - 10); });
+    on('seekforward', () => { if (last) last.currentTime += 10; });
+  }
+
+  update();
+})();
 """
 
 
@@ -220,6 +327,11 @@ def build(out):
                 f'<a href="../{other}/{path.stem}.html">{label}</a>'
                 '<button id="all" type="button">▶ Tout</button>'
                 '<button id="speed" type="button" aria-label="Vitesse">1×</button>'
+                "</div>"
+                '<div class="now" id="now" hidden>'
+                '<span id="now-title" class="grow"></span>'
+                '<button id="restart" type="button">⏮ Début</button>'
+                '<audio id="player" controls preload="auto" hidden></audio>'
                 "</div></nav>"
             )
             body = render_lesson(md, text) + SUPPORT + f"<script>{SCRIPT}</script>"
