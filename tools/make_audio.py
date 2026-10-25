@@ -30,7 +30,8 @@ voice says the letter.
 - `listen` blocks are played twice: first the French only, then line by line
   with the Italian translation. A list item may start with a bold speaker
   label (`**Léa :** ...`); speakers get a female (f) or male (m) voice as
-  declared after the `|`.
+  declared after the `|`. `Narration=f` (or m) declares the voice of the
+  lines without a label; it is the default French voice otherwise.
 
 Blocks with the same name go into the same track,
 audio/french-<language>/<lesson>/<name>.mp3.
@@ -109,6 +110,9 @@ FIRST_LISTEN = "Première écoute. Écoute sans lire."
 SECOND_LISTEN = "Deuxième écoute, avec la traduction."
 READ_ALOUD = "Maintenant, lis le texte à voix haute."
 ONLY_LISTEN = "Écoute sans lire."   # the single listening of the French-only version
+# In a listen block, the speaker whose voice reads the lines without a speaker
+# label (the narration of the stories): `| Narration=m; Nina=f`.
+NARRATOR = "Narration"
 
 SAMPLE_RATE = 24000
 
@@ -297,7 +301,7 @@ def listen_script(body, voices_spec, tr, french_only=False):
         if kind == "heading":
             title = segments(text, tr, french_only)
             continue
-        voice = FRENCH
+        voice = voices.get(NARRATOR, FRENCH)
         m = SPEAKER_RE.match(text) if kind == "item" else None
         if m:
             voice, text = voices.get(m["speaker"], FRENCH), m["line"]
@@ -381,6 +385,12 @@ async def synthesize(voice, rate, text):
 
 async def download(key, voice, rate, text):
     import edge_tts
+    import edge_tts.communicate
+
+    # edge-tts trusts only certifi's certificates; behind a proxy that signs
+    # its own (as in the cloud sessions), also trust the one in SSL_CERT_FILE.
+    if os.environ.get("SSL_CERT_FILE"):
+        edge_tts.communicate._SSL_CTX.load_verify_locations(os.environ["SSL_CERT_FILE"])
 
     wav = CACHE / f"{key}.wav"
     if wav.exists():

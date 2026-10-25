@@ -12,6 +12,25 @@ A French course for Italian and English speakers, to learn to speak and write Fr
 | 4 | [Ma journée](lessons/french-only/04-ma-journee.md) | [Ma journée](lessons/french-italian/04-ma-journee.md) | [Ma journée](lessons/french-english/04-ma-journee.md) | numbers 21–69, telling the time, days of the week, reflexive verbs, the verb *faire* |
 | 5 | [En ville](lessons/french-only/05-en-ville.md) | [En ville](lessons/french-italian/05-en-ville.md) | [En ville](lessons/french-english/05-en-ville.md) | numbers 70–100, places in town, the verb *aller*, *au* / *à la*, the near future, asking the way |
 
+## Stories
+
+Longer stories to read and listen to after lesson 5, one for each genre. They are told in the
+present, with the words and grammar of lessons 1–5; the few new words are listed at the start.
+Each story has four chapters, each with its track and questions, and a writing exercise at the end.
+
+| Genre | French only | With Italian translation | With English translation |
+|---|---|---|---|
+| Fantasy | [La clé d'argent](lessons/french-only/histoire-fantastique-la-cle-d-argent.md) | [La clé d'argent](lessons/french-italian/histoire-fantastique-la-cle-d-argent.md) | [La clé d'argent](lessons/french-english/histoire-fantastique-la-cle-d-argent.md) |
+| Mystery | [La Dame en bleu](lessons/french-only/histoire-policiere-la-dame-en-bleu.md) | [La Dame en bleu](lessons/french-italian/histoire-policiere-la-dame-en-bleu.md) | [La Dame en bleu](lessons/french-english/histoire-policiere-la-dame-en-bleu.md) |
+| Sci-fi | [Ada sait tout](lessons/french-only/histoire-science-fiction-ada-sait-tout.md) | [Ada sait tout](lessons/french-italian/histoire-science-fiction-ada-sait-tout.md) | [Ada sait tout](lessons/french-english/histoire-science-fiction-ada-sait-tout.md) |
+| Romance | [Le café de huit heures](lessons/french-only/histoire-amour-le-cafe-de-huit-heures.md) | [Le café de huit heures](lessons/french-italian/histoire-amour-le-cafe-de-huit-heures.md) | [Le café de huit heures](lessons/french-english/histoire-amour-le-cafe-de-huit-heures.md) |
+
+A story is a lesson file named `histoire-<genre>-<title>.md` (genres: `fantastique`, `policiere`,
+`science-fiction`, `amour`), written like the lessons and with audio made the same way. The website
+lists the stories after lesson 5, grouped by genre (`GENRES` and `STORIES_AFTER` in
+`tools/build_site.py`). In the stories, the narration has its own voice: `Narration=m` (or `f`)
+in the voices of a `listen` block is the voice of the lines without a speaker.
+
 ## Support
 
 If the course helps you, you can [buy me a coffee on Ko-fi](https://ko-fi.com/qwark992) ☕
@@ -97,6 +116,7 @@ The tracks live in [`audio/french-italian/`](audio/french-italian) and
 [`audio/french-only/`](audio/french-only) for the French-only version. They are generated from the
 lesson text by [`tools/make_audio.py`](tools/make_audio.py) with Microsoft's neural voices
 (through [edge-tts](https://github.com/rany2/edge-tts)), so they follow the lesson whenever it changes.
+Behind a proxy with its own certificate (as in the Claude cloud sessions), set `SSL_CERT_FILE` to it.
 
 The parts to read aloud are marked in the markdown with HTML comments, invisible when
 the page is rendered:
