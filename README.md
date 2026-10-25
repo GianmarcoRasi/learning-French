@@ -22,6 +22,12 @@ use *Add to Home Screen* (Safari's share menu, or Chrome's ⋮ menu) to open it 
 an app. The **▶ Tout** button at the top plays all the audio of the lesson, one track
 after the other, and the **1×** button changes the speed of the audio.
 
+*Tout* keeps playing with the screen off, and can be paused, resumed or moved to the
+previous or next track from the lock screen. If it is interrupted (a call, or the
+browser closing the page), the button becomes **▶ Reprendre** and goes on from where
+it stopped, a few seconds earlier; the position is remembered for each lesson, also
+after closing the page. **⏮ Début** starts again from the first track.
+
 The site is built by [`tools/build_site.py`](tools/build_site.py) and published by
 [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every push to `main`.
 To build it locally:
