@@ -29,6 +29,16 @@ VERSIONS = [
     ("french-english", "With English", "English"),
 ]
 
+# The stories: lessons/<version>/histoire-<genre>-<title>.md, listed on the home
+# page after lesson STORIES_AFTER, by genre, in this order.
+STORIES_AFTER = 5
+GENRES = [
+    ("fantastique", "Fantastique (<em>Fantasy</em>)"),
+    ("policiere", "Policier (<em>Giallo</em>) (<em>Mystery</em>)"),
+    ("science-fiction", "Science-fiction (<em>Fantascienza</em>) (<em>Sci-fi</em>)"),
+    ("amour", "Amour (<em>Romantico</em>) (<em>Romance</em>)"),
+]
+
 KOFI = "https://ko-fi.com/qwark992"
 SUPPORT = {
     "french-only": (
@@ -355,24 +365,44 @@ def build(out):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(page(plain, body, "../../", bar), encoding="utf-8")
 
-    items = []
-    for stem, titles in sorted(lessons.items()):
+    def item(stem, titles):
         # The French title, without the translation, which differs in each version.
         name = re.sub(r"\s*\(.*\)$", "", titles.get("french-only") or next(iter(titles.values())))
+        name = re.sub(r"^Histoire .*? — ", "", name)   # the genre is in the heading
         links = "".join(
             f'<a href="lessons/{version}/{stem}.html">{label}</a>'
             for version, label, _ in VERSIONS
             if version in titles
         )
-        items.append(
-            f'<li><span class="title">{html.escape(name)}</span>{links}</li>'
+        return f'<li><span class="title">{html.escape(name)}</span>{links}</li>'
+
+    lessons_html = [item(stem, titles) for stem, titles in sorted(lessons.items())
+                    if not stem.startswith("histoire-")]
+    stories_html = ""
+    for key, heading in GENRES:
+        stories = [item(stem, titles) for stem, titles in sorted(lessons.items())
+                   if stem.startswith(f"histoire-{key}-")]
+        if stories:
+            stories_html += f'<h3>{heading}</h3><ul class="lessons">{"".join(stories)}</ul>'
+    if stories_html:
+        stories_html = (
+            "<h2>Histoires</h2>"
+            '<p class="note">Des histoires plus longues, à lire après la leçon '
+            f"{STORIES_AFTER}. (<em>Racconti più lunghi, da leggere dopo la lezione "
+            f"{STORIES_AFTER}.</em>) (<em>Longer stories, to read after lesson "
+            f"{STORIES_AFTER}.</em>)</p>" + stories_html
         )
+    # The stories come right after the lesson they are written for.
+    split = sum(1 for stem in lessons if re.match(r"\d+-", stem) and int(stem.split("-")[0]) <= STORIES_AFTER)
     index = (
         "<h1>Apprendre le français</h1>"
         '<p class="note">Un cours de français pour les italiens et les anglophones. '
         "(<em>Un corso di francese per italiani.</em>) "
         "(<em>A French course for English speakers.</em>)</p>"
-        f'<ul class="lessons">{"".join(items)}</ul>'
+        f'<h2>Leçons</h2><ul class="lessons">{"".join(lessons_html[:split])}</ul>'
+        + stories_html
+        + (f'<h2>Suite des leçons</h2><ul class="lessons">{"".join(lessons_html[split:])}</ul>'
+           if lessons_html[split:] else "")
         + SUPPORT["french-italian"]
     )
     (out / "index.html").write_text(page("Apprendre le français", index, ""), encoding="utf-8")
